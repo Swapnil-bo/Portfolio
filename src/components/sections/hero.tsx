@@ -58,7 +58,7 @@ export function HeroSection() {
                 </motion.div>
 
                 <motion.h1 variants={textVariants} className="mb-8 max-w-5xl text-5xl font-extrabold tracking-tighter text-white sm:text-7xl lg:text-8xl leading-tight">
-                    Hi, I'm <br className="md:hidden" />
+                    Hi, I&apos;m <br className="md:hidden" />
                     <motion.span
                         animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
                         transition={{ duration: 5, repeat: Infinity, ease: "linear" }}

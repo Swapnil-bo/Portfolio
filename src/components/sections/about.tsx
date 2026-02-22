@@ -19,7 +19,7 @@ export function AboutSection() {
                     </div>
                     <h2 className="mb-4 text-3xl font-bold tracking-tight text-white">The Engineer Behind the AI</h2>
                     <p className="mb-6 text-lg text-slate-400 leading-relaxed">
-                        I'm a student at <span className="text-white font-medium tracking-tight">Brainware University</span>, immersed in the world of Generative AI and modern web design. I specialize in "vibe coding"—a workflow where intuition, rapid iteration, and agentic AI pairs seamlessly to craft premium digital experiences.
+                        I&apos;m a student at <span className="text-white font-medium tracking-tight">Brainware University</span>, immersed in the world of Generative AI and modern web design. I specialize in &quot;vibe coding&quot;—a workflow where intuition, rapid iteration, and agentic AI pairs seamlessly to craft premium digital experiences.
                     </p>
                     <div className="flex items-center gap-4 text-sm font-medium text-slate-300">
                         <span className="flex items-center gap-2">
