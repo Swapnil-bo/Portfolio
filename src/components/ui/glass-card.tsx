@@ -1,11 +1,13 @@
 "use client";
 
+import { ReactNode } from "react";
 import { HTMLMotionProps, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface GlassCardProps extends HTMLMotionProps<"div"> {
     className?: string;
     glow?: boolean;
+    children: ReactNode;
 }
 
 export function GlassCard({ className, children, glow = false, ...props }: GlassCardProps) {
