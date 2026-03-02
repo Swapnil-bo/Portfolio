@@ -7,7 +7,7 @@ import { Mic, MessageSquare, Briefcase, Film, Github, ExternalLink, Network, Glo
 const projects = [
     {
         title: "Jarvis",
-        description: "Fully local, voice-activated AI assistant running on Apple Silicon.",
+        description: "100% local AI assistant with voice, vision, memory & code execution — running on 8GB RAM. No cloud. No API keys. No excuses.",
         tags: ["Python", "Local AI", "CoreML"],
         icon: <Mic className="h-6 w-6 text-emerald-400" />,
         className: "md:col-span-2 md:row-span-2",
@@ -28,7 +28,7 @@ const projects = [
     },
     {
         title: "NEXUS",
-        description: "A multi-agent, self-correcting code generation pipeline.",
+        description: "A local multi-agent system that plans, writes, executes, and self-corrects Python code — powered by LangGraph and a 3B parameter model.",
         tags: ["Python", "Multi-Agent", "Agentic Workflows"],
         icon: <Network className="h-6 w-6 text-blue-400" />,
         className: "md:col-span-2 md:row-span-1 border-blue-500/20",
@@ -36,7 +36,7 @@ const projects = [
     },
     {
         title: "Chat-Vibe",
-        description: "Privacy-first WhatsApp analyzer built with Gemini 2.5 Flash.",
+        description: "High-performance WhatsApp analyzer built with Next.js 14 and Gemini for deep psychological insights.",
         tags: ["TypeScript", "Web Workers", "Next.js"],
         icon: <MessageSquare className="h-6 w-6 text-cyan-400" />,
         className: "md:col-span-1 md:row-span-1",
@@ -44,7 +44,7 @@ const projects = [
     },
     {
         title: "ResumeRank-AI",
-        description: "AI-powered candidate screening agent simulating HR workflows.",
+        description: "Automated screening agent using Gemini 2.5 Flash to rank resumes via LLM-based gap analysis.",
         tags: ["Python", "Agentic Workflows"],
         icon: <Briefcase className="h-6 w-6 text-purple-400" />,
         className: "md:col-span-1 md:row-span-1",
@@ -52,7 +52,7 @@ const projects = [
     },
     {
         title: "CineMatch",
-        description: "Item-based collaborative filtering recommender.",
+        description: "Collaborative filtering engine built with Scikit-learn and Streamlit for personalized movie discovery.",
         tags: ["Python", "Scikit-learn", "Streamlit"],
         icon: <Film className="h-6 w-6 text-pink-400" />,
         className: "md:col-span-2 md:row-span-1",
@@ -60,7 +60,7 @@ const projects = [
     },
     {
         title: "AI-Language Translator",
-        description: "Privacy-focused offline neural translation app using Streamlit and MarianMT. Supports bidirectional translation for 6+ language pairs.",
+        description: "Privacy-focused offline translator using Streamlit and MarianMT, supporting bidirectional translation for 6+ language pairs.",
         tags: ["Python", "Streamlit", "Local AI"],
         icon: <Globe className="h-6 w-6 text-indigo-400" />,
         className: "md:col-span-1 md:row-span-1 border-indigo-500/20",
