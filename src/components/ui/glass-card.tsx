@@ -28,7 +28,7 @@ export function GlassCard({ className, children, glow = false, ...props }: Glass
         >
             {/* Subtle interior glow overlay for layered glass effect */}
             <div className="pointer-events-none absolute inset-0 rounded-[2.5rem] bg-gradient-to-b from-white/5 to-transparent opacity-50" />
-            <div className="relative z-10 h-full w-full">{children}</div>
+            <div className="relative z-10 flex h-full w-full flex-col">{children}</div>
         </motion.div>
     );
 }
