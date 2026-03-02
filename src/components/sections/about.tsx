@@ -5,7 +5,7 @@ import { Cpu, Code2, Sparkles, BookOpen } from "lucide-react";
 import { GlassCard } from "@/components/ui/glass-card";
 
 const techStack = [
-    "Cursor", "Claude Code", "Antigravity", "Python", "LLMs", "Agentic Workflows", "PyTorch", "LangChain", "Github"];
+    "Python", "LLMs", "Agentic Workflows", "PyTorch", "LangChain", "Cursor", "Claude Code", "Antigravity", "Github"];
 
 export function AboutSection() {
     return (
