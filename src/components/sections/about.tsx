@@ -6,7 +6,7 @@ import { GlassCard } from "@/components/ui/glass-card";
 
 const techStack = [
     "Cursor", "Claude Code", "Python", "React", "Next.js", "TypeScript",
-    "Tailwind CSS", "Agentic Workflows", "PyTorch", "LangChain"
+    "Tailwind CSS", "Agentic Workflows", "PyTorch", "LangChain", "Antigravity"
 ];
 
 export function AboutSection() {

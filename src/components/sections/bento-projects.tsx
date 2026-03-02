@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { GlassCard } from "@/components/ui/glass-card";
-import { Mic, MessageSquare, Briefcase, Film, Github, ExternalLink } from "lucide-react";
+import { Mic, MessageSquare, Briefcase, Film, Github, ExternalLink, Network, Globe } from "lucide-react";
 
 const projects = [
     {
@@ -27,6 +27,14 @@ const projects = [
         )
     },
     {
+        title: "NEXUS",
+        description: "A multi-agent, self-correcting code generation pipeline.",
+        tags: ["Python", "Multi-Agent", "Agentic Workflows"],
+        icon: <Network className="h-6 w-6 text-blue-400" />,
+        className: "md:col-span-2 md:row-span-1 border-blue-500/20",
+        href: "https://github.com/Swapnil-bo/NEXUS",
+    },
+    {
         title: "Chat-Vibe",
         description: "Privacy-first WhatsApp analyzer built with Gemini 2.5 Flash.",
         tags: ["TypeScript", "Web Workers", "Next.js"],
@@ -49,6 +57,14 @@ const projects = [
         icon: <Film className="h-6 w-6 text-pink-400" />,
         className: "md:col-span-2 md:row-span-1",
         href: "https://github.com/Swapnil-bo/Movie-Recommendation-System",
+    },
+    {
+        title: "AI-Language Translator",
+        description: "Privacy-focused offline neural translation app using Streamlit and MarianMT. Supports bidirectional translation for 6+ language pairs.",
+        tags: ["Python", "Streamlit", "Local AI"],
+        icon: <Globe className="h-6 w-6 text-indigo-400" />,
+        className: "md:col-span-1 md:row-span-1 border-indigo-500/20",
+        href: "https://github.com/Swapnil-bo/AI-Language-Translator",
     },
 ];
 
@@ -91,7 +107,7 @@ export function BentoProjects() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
-                className="grid grid-cols-1 gap-6 md:grid-cols-3 md:auto-rows-[250px]"
+                className="grid grid-cols-1 gap-6 md:grid-cols-3 md:auto-rows-[250px] grid-flow-row-dense"
             >
                 {projects.map((project, idx) => (
                     <a
