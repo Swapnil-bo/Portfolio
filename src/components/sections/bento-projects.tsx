@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { GlassCard } from "@/components/ui/glass-card";
-import { Mic, MessageSquare, Briefcase, Film, Github, ExternalLink, Network, Globe } from "lucide-react";
+import { Mic, MessageSquare, Briefcase, Film, Github, ExternalLink, Network, Globe, Waypoints } from "lucide-react";
 
 const projects = [
     {
@@ -65,6 +65,14 @@ const projects = [
         icon: <Globe className="h-6 w-6 text-indigo-400" />,
         className: "md:col-span-1 md:row-span-1 border-indigo-500/20",
         href: "https://github.com/Swapnil-bo/AI-Language-Translator",
+    },
+    {
+        title: "Butterfly Effect Simulator",
+        description: "AI-powered butterfly effect simulator — input a small decision, get a 10-year consequence chain as an interactive React Flow graph. FastAPI + Groq + Next.js.",
+        tags: ["Python", "FastAPI", "Next.js", "React Flow", "Groq", "Ollama", "TypeScript"],
+        icon: <Waypoints className="h-6 w-6 text-fuchsia-400" />,
+        className: "md:col-span-1 md:row-span-1 border-fuchsia-500/20",
+        href: "https://github.com/Swapnil-bo/Butterfly-Effect-Simulator",
     },
 ];
 
