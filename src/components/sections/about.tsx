@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { Cpu, Code2, Sparkles, BookOpen } from "lucide-react";
 import { GlassCard } from "@/components/ui/glass-card";
 
-const techStack = ["Python", "LLMs", "Agentic Workflows", "PyTorch", "LangChain", "Ollama", "Vector DBs", "Hugging Face", "Cursor",
-    "Claude Code", "Antigravity", "Github"];
+const techStack = ["Python", "LLMs", "Agentic Workflows", "PyTorch", "LangChain", "Ollama", "Vector DBs", "Hugging Face",
+    "Claude Code", "Cursor", "Antigravity", "Github"];
 
 export function AboutSection() {
     return (
