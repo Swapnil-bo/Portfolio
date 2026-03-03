@@ -35,6 +35,14 @@ const projects = [
         href: "https://github.com/Swapnil-bo/NEXUS",
     },
     {
+        title: "Butterfly Effect Simulator",
+        description: "AI-powered butterfly effect simulator — input a small decision, get a 10-year consequence chain as an interactive React Flow graph. FastAPI + Groq + Next.js.",
+        tags: ["Python", "FastAPI", "Next.js", "React Flow", "Groq", "Ollama", "TypeScript"],
+        icon: <Waypoints className="h-6 w-6 text-fuchsia-400" />,
+        className: "md:col-span-1 md:row-span-1 border-fuchsia-500/20",
+        href: "https://github.com/Swapnil-bo/Butterfly-Effect-Simulator",
+    },
+    {
         title: "Chat-Vibe",
         description: "High-performance WhatsApp analyzer built with Next.js 14 and Gemini for deep psychological insights.",
         tags: ["TypeScript", "Web Workers", "Next.js"],
@@ -66,14 +74,7 @@ const projects = [
         className: "md:col-span-1 md:row-span-1 border-indigo-500/20",
         href: "https://github.com/Swapnil-bo/AI-Language-Translator",
     },
-    {
-        title: "Butterfly Effect Simulator",
-        description: "AI-powered butterfly effect simulator — input a small decision, get a 10-year consequence chain as an interactive React Flow graph. FastAPI + Groq + Next.js.",
-        tags: ["Python", "FastAPI", "Next.js", "React Flow", "Groq", "Ollama", "TypeScript"],
-        icon: <Waypoints className="h-6 w-6 text-fuchsia-400" />,
-        className: "md:col-span-1 md:row-span-1 border-fuchsia-500/20",
-        href: "https://github.com/Swapnil-bo/Butterfly-Effect-Simulator",
-    },
+    
 ];
 
 const containerVariants = {
