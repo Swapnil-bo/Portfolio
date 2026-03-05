@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { GlassCard } from "@/components/ui/glass-card";
-import { Mic, MessageSquare, Briefcase, Film, Github, ExternalLink, Network, Globe, Waypoints } from "lucide-react";
+import { Mic, MessageSquare, Briefcase, Film, Github, ExternalLink, Network, Globe, Waypoints, Podcast } from "lucide-react";
 
 const projects = [
     {
@@ -33,6 +33,14 @@ const projects = [
         icon: <Network className="h-6 w-6 text-blue-400" />,
         className: "md:col-span-2 md:row-span-1 border-blue-500/20",
         href: "https://github.com/Swapnil-bo/NEXUS",
+    },
+    {
+        title: "EchoChamber",
+        description: "AI-powered auto-podcast generator. Drop a URL, PDF, or Wikipedia page — get a 5-minute debate podcast with two AI personas.",
+        tags: ["Multi-Agent", "PyDub", "LangChain", "FastAPI", "Edge-TTS", "React", "Gemini", "TypeScript", "Vite"],
+        icon: <Podcast className="h-6 w-6 text-emerald-400" />,
+        className: "md:col-span-2 md:row-span-1 border-emerald-500/20",
+        href: "https://github.com/Swapnil-bo/EchoChamber",
     },
     {
         title: "Butterfly Effect Simulator",
@@ -74,7 +82,7 @@ const projects = [
         className: "md:col-span-1 md:row-span-1 border-indigo-500/20",
         href: "https://github.com/Swapnil-bo/AI-Language-Translator",
     },
-    
+
 ];
 
 const containerVariants = {
