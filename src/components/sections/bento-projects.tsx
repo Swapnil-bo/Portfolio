@@ -61,7 +61,7 @@ const projects = [
         title: "Chat-Vibe",
         category: "Full-Stack",
         description: "High-performance WhatsApp analyzer built with Next.js 14 and Gemini for deep psychological insights.",
-        tags: ["TypeScript", "Web Workers", "Next.js"],
+        tags: ["Next.js", "TypeScript", "Generative AI", "Web Workers", "Data Visualization", "Recharts", "Privacy First"],
         icon: <MessageSquare className="h-6 w-6 text-cyan-400" />,
         className: "md:col-span-1 md:row-span-1",
         href: "https://github.com/Swapnil-bo/Chat-Vibe",
