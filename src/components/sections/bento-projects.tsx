@@ -34,7 +34,7 @@ const projects = [
         title: "NEXUS",
         category: "Agentic AI",
         description: "A local multi-agent system that plans, writes, executes, and self-corrects Python code — powered by LangGraph and a 3B parameter model.",
-        tags: ["Python", "Ollama", "Multi-Agent", "Agentic Workflows"],
+        tags: ["Python", "Multi-Agent", "Agentic Workflows", "Ollama", "LangGraph", "Pydantic", "LangChain"],
         icon: <Network className="h-6 w-6 text-blue-400" />,
         className: "md:col-span-2 md:row-span-1 border-blue-500/20",
         href: "https://github.com/Swapnil-bo/NEXUS",
