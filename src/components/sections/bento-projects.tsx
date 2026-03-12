@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { GlassCard } from "@/components/ui/glass-card";
 import { Mic, MessageSquare, Briefcase, Film, Github, ExternalLink, Network, Globe, Waypoints, Podcast, Home } from "lucide-react";
 
-const CATEGORIES = ["All", "Agentic AI", "Local LLMs", "Machine Learning", "Full-Stack"];
+const CATEGORIES = ["All", "Agentic AI", "Local LLMs", "ML & Data Science", "Full-Stack"];
 
 const projects = [
     {
@@ -77,7 +77,7 @@ const projects = [
     },
     {
         title: "CineMatch",
-        category: "Machine Learning",
+        category: "ML & Data Science",
         description: "Collaborative filtering engine built with Scikit-learn and Streamlit for personalized movie discovery.",
         tags: ["Machine Learning", "Python", "Data Science", "Pandas", "NumPy", "Scipy", "Scikit-learn", "Streamlit"],
         icon: <Film className="h-6 w-6 text-pink-400" />,
@@ -86,7 +86,7 @@ const projects = [
     },
     {
         title: "House Price Predictor",
-        category: "Machine Learning",
+        category: "ML & Data Science",
         description: "End-to-end House Price Prediction pipeline featuring advanced EDA, multicollinearity handling (VIF), and Scikit-Learn pipelines for robust regression modeling.",
         tags: ["Machine Learning", "Python", "Data Science", "Regression", "Scikit-Learn", "Streamlit"],
         icon: <Home className="h-6 w-6 text-emerald-400" />,
