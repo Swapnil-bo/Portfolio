@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { GlassCard } from "@/components/ui/glass-card";
 import { Mic, MessageSquare, Briefcase, Film, Github, ExternalLink, Network, Globe, Waypoints, Podcast } from "lucide-react";
 
-const CATEGORIES = ["All", "Agentic AI", "Local LLMs", "Full-Stack"];
+const CATEGORIES = ["All", "Agentic AI", "Local LLMs", "Machine Learning", "Full-Stack"];
 
 const projects = [
     {
@@ -77,7 +77,7 @@ const projects = [
     },
     {
         title: "CineMatch",
-        category: "Full-Stack",
+        category: "Machine Learning",
         description: "Collaborative filtering engine built with Scikit-learn and Streamlit for personalized movie discovery.",
         tags: ["Python", "Scikit-learn", "Streamlit"],
         icon: <Film className="h-6 w-6 text-pink-400" />,
@@ -153,7 +153,13 @@ export function BentoProjects() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
                 layout
-                className="grid grid-cols-1 gap-6 md:grid-cols-3 md:auto-rows-[minmax(280px,auto)] grid-flow-row-dense"
+                className={`grid grid-cols-1 gap-6 md:auto-rows-[minmax(280px,auto)] grid-flow-row-dense ${
+                    activeCategory === "All" || filteredProjects.length >= 3
+                        ? "md:grid-cols-3"
+                        : filteredProjects.length === 2
+                        ? "md:grid-cols-2 max-w-5xl mx-auto"
+                        : "md:grid-cols-1 max-w-2xl mx-auto w-full"
+                }`}
             >
                 <AnimatePresence mode="popLayout">
                     {filteredProjects.map((project) => (
@@ -164,7 +170,11 @@ export function BentoProjects() {
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.95 }}
                             transition={{ duration: 0.3 }}
-                            className={`${project.className}`}
+                            className={
+                                activeCategory === "All"
+                                    ? project.className
+                                    : project.className.replace(/md:col-span-\d+/g, "").replace(/md:row-span-\d+/g, "").trim()
+                            }
                         >
                             <a
                                 href={project.href}
