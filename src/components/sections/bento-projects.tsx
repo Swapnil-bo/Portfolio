@@ -97,7 +97,7 @@ const projects = [
         title: "AI-Language Translator",
         category: "Local LLMs",
         description: "Privacy-focused offline translator using Streamlit and MarianMT, supporting bidirectional translation for 6+ language pairs.",
-        tags: ["Python", "HuggingFace", "Local-LLM", "MarianMT", "Transformers", "PyTorch", "Streamlit",],
+        tags: ["Python", "HuggingFace", "Local-LLM", "MarianMT", "Transformers", "PyTorch", "Streamlit"],
         icon: <Globe className="h-6 w-6 text-indigo-400" />,
         className: "md:col-span-1 md:row-span-1 border-indigo-500/20",
         href: "https://github.com/Swapnil-bo/AI-Language-Translator",
