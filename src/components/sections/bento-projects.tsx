@@ -70,7 +70,7 @@ const projects = [
         title: "ResumeRank-AI",
         category: "Agentic AI",
         description: "Automated screening agent using Gemini 2.5 Flash to rank resumes via LLM-based gap analysis.",
-        tags: ["Python", "Agentic Workflows"],
+        tags: ["Python", "Agentic Workflows", "Pandas", "JSON", "PyPDF", "Gemini", "Streamlit"],
         icon: <Briefcase className="h-6 w-6 text-purple-400" />,
         className: "md:col-span-1 md:row-span-1",
         href: "https://github.com/Swapnil-bo/ResumeRank-AI",
