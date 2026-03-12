@@ -79,7 +79,7 @@ const projects = [
         title: "CineMatch",
         category: "Machine Learning",
         description: "Collaborative filtering engine built with Scikit-learn and Streamlit for personalized movie discovery.",
-        tags: ["Python", "Scikit-learn", "Streamlit"],
+        tags: ["Machine Learning", "Python", "Data Science", "Pandas", "NumPy", "Scipy", "Scikit-learn", "Streamlit"],
         icon: <Film className="h-6 w-6 text-pink-400" />,
         className: "md:col-span-2 md:row-span-1",
         href: "https://github.com/Swapnil-bo/Movie-Recommendation-System",
