@@ -12,7 +12,7 @@ const projects = [
         title: "Jarvis",
         category: "Local LLMs",
         description: "100% local AI assistant with voice, vision, memory & code execution — running on 8GB RAM. No cloud. No API keys. No excuses.",
-        tags: ["Python", "Local AI", "CoreML"],
+        tags: ["Python", "AI Assistant", "Voice Assistant", "Local-LLM", "Phi-3", "Ollama", "Apple Silicon", "MacOS", "Code Execution", "Whisper", "MLX"],
         icon: <Mic className="h-6 w-6 text-emerald-400" />,
         className: "md:col-span-2 md:row-span-2",
         href: "https://github.com/Swapnil-bo/Jarvis",
