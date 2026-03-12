@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { GlassCard } from "@/components/ui/glass-card";
-import { Mic, MessageSquare, Briefcase, Film, Github, ExternalLink, Network, Globe, Waypoints, Podcast } from "lucide-react";
+import { Mic, MessageSquare, Briefcase, Film, Github, ExternalLink, Network, Globe, Waypoints, Podcast, Home } from "lucide-react";
 
 const CATEGORIES = ["All", "Agentic AI", "Local LLMs", "Machine Learning", "Full-Stack"];
 
@@ -83,6 +83,15 @@ const projects = [
         icon: <Film className="h-6 w-6 text-pink-400" />,
         className: "md:col-span-2 md:row-span-1",
         href: "https://github.com/Swapnil-bo/Movie-Recommendation-System",
+    },
+    {
+        title: "House Price Predictor",
+        category: "Machine Learning",
+        description: "End-to-end House Price Prediction pipeline featuring advanced EDA, multicollinearity handling (VIF), and Scikit-Learn pipelines for robust regression modeling.",
+        tags: ["Machine Learning", "Python", "Data Science", "Regression", "Scikit-Learn", "Streamlit"],
+        icon: <Home className="h-6 w-6 text-emerald-400" />,
+        className: "md:col-span-1 md:row-span-1 border-emerald-500/20",
+        href: "https://github.com/Swapnil-bo/House-Price-Predictor",
     },
     {
         title: "AI-Language Translator",
