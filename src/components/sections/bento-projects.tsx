@@ -7,7 +7,19 @@ import { Mic, MessageSquare, Briefcase, Film, Github, ExternalLink, Network, Glo
 
 const CATEGORIES = ["All", "Agentic AI", "Local LLMs", "ML & Data Science", "Full-Stack"];
 
-const projects = [
+type Project = {
+    title: string;
+    category: string;
+    description: string;
+    tags: string[];
+    icon: React.ReactNode;
+    className: string;
+    href: string;
+    content?: React.ReactNode;
+    architecture?: string[];
+};
+
+const projects: Project[] = [
     {
         title: "Jarvis",
         category: "Local LLMs",
@@ -16,6 +28,7 @@ const projects = [
         icon: <Mic className="h-6 w-6 text-emerald-400" />,
         className: "md:col-span-2 md:row-span-2",
         href: "https://github.com/Swapnil-bo/Jarvis",
+        architecture: ["Voice Input -> CoreML Wake Word", "Local LLM Routing (Ollama/Phi-3)", "Sub-process Code Execution", "Audio Output Generation"],
         content: (
             <div className="mt-6 flex-1 rounded-xl border border-white/10 bg-[#0a0a0a] p-4 text-xs font-mono text-emerald-400 shadow-inner">
                 <div className="mb-3 flex items-center gap-2 border-b border-white/5 pb-2">
@@ -38,6 +51,7 @@ const projects = [
         icon: <Network className="h-6 w-6 text-blue-400" />,
         className: "md:col-span-2 md:row-span-1 border-blue-500/20",
         href: "https://github.com/Swapnil-bo/NEXUS",
+        architecture: ["User Prompt -> LangGraph Orchestrator", "Agent 1: Code Generation (3B Model)", "Agent 2: Execution & Testing", "Self-Correcting Feedback Loop"],
     },
     {
         title: "EchoChamber",
@@ -47,6 +61,7 @@ const projects = [
         icon: <Podcast className="h-6 w-6 text-emerald-400" />,
         className: "md:col-span-2 md:row-span-1 border-emerald-500/20",
         href: "https://github.com/Swapnil-bo/EchoChamber",
+        architecture: ["Document Ingestion (URL/PDF)", "LangChain Parsing & Chunking", "Multi-Agent Debate Generation (Gemini Flash)", "PyDub + Edge-TTS Audio Synthesis"],
     },
     {
         title: "Butterfly Effect Simulator",
@@ -116,6 +131,7 @@ const containerVariants = {
 
 export function BentoProjects() {
     const [activeCategory, setActiveCategory] = useState("All");
+    const [expandedIds, setExpandedIds] = useState<Record<string, boolean>>({});
 
     const filteredProjects = projects.filter(
         (project) => activeCategory === "All" || project.category === activeCategory
@@ -202,6 +218,40 @@ export function BentoProjects() {
                                         <h3 className="mb-2 text-xl font-semibold tracking-tight text-white">{project.title}</h3>
                                         <p className="text-sm text-slate-400 leading-relaxed">{project.description}</p>
                                         {project.content && project.content}
+                                        {project.architecture && (
+                                            <div className="mt-4">
+                                                <button
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        e.stopPropagation();
+                                                        setExpandedIds((prev) => ({ ...prev, [project.title]: !prev[project.title] }));
+                                                    }}
+                                                    className="text-xs text-slate-400 hover:text-emerald-400 transition-colors focus:outline-none"
+                                                >
+                                                    {expandedIds[project.title] ? "[-] Hide Architecture" : "[+] View Architecture"}
+                                                </button>
+                                                <AnimatePresence initial={false}>
+                                                    {expandedIds[project.title] && (
+                                                        <motion.div
+                                                            initial={{ height: 0, opacity: 0 }}
+                                                            animate={{ height: "auto", opacity: 1 }}
+                                                            exit={{ height: 0, opacity: 0 }}
+                                                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                                                            className="overflow-hidden"
+                                                        >
+                                                            <div className="mt-3 flex flex-col gap-2 border-l border-emerald-500/30 pl-3 py-1">
+                                                                {project.architecture.map((step, idx) => (
+                                                                    <div key={idx} className="flex items-start gap-2 text-xs font-mono text-slate-300">
+                                                                        <span className="text-emerald-500/50 mt-0.5">{`0${idx + 1}`}</span>
+                                                                        <span className="leading-relaxed">{step}</span>
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+                                                        </motion.div>
+                                                    )}
+                                                </AnimatePresence>
+                                            </div>
+                                        )}
                                     </div>
                                     <div className="mt-6 flex flex-wrap gap-2">
                                         {project.tags.map((tag) => (
