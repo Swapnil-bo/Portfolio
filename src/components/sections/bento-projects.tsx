@@ -46,12 +46,12 @@ const projects: Project[] = [
     {
         title: "NEXUS",
         category: "Agentic AI",
-        description: "A local multi-agent system that plans, writes, executes, and self-corrects Python code — powered by LangGraph and a 3B parameter model.",
+        description: "A local multi-agent system that plans, writes, executes, and self-corrects Python code — powered by LangGraph and a 7B parameter model.",
         tags: ["Python", "Multi-Agent", "Agentic Workflows", "Ollama", "LangGraph", "Pydantic", "LangChain"],
         icon: <Network className="h-6 w-6 text-blue-400" />,
         className: "md:col-span-2 md:row-span-1 border-blue-500/20",
         href: "https://github.com/Swapnil-bo/NEXUS",
-        architecture: ["User Prompt -> LangGraph Orchestrator", "Agent 1: Code Generation (3B Model)", "Agent 2: Execution & Testing", "Self-Correcting Feedback Loop"],
+        architecture: ["User Prompt -> LangGraph Orchestrator", "Agent 1: Code Generation (7B Model)", "Agent 2: Execution & Testing", "Self-Correcting Feedback Loop"],
     },
     {
         title: "EchoChamber",
