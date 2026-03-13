@@ -1,14 +1,5 @@
 # 🚀 Swapnil Hazra | AI Developer Portfolio
 
-<p align="left">
-  <a href="https://portfolio-kohl-phi-1pq5smtvqz.vercel.app/">
-    <img src="https://img.shields.io/badge/LIVE%20DEMO-059669?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Portfolio"/>
-  </a>
-  <a href="https://github.com/Swapnil-bo">
-    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Profile"/>
-  </a>
-</p>
-
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)
