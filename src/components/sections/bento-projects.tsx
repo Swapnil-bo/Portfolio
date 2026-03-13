@@ -21,16 +21,6 @@ type Project = {
 
 const projects: Project[] = [
     {
-        title: "CutAI",
-        categories: ["Local LLMs", "Full-Stack"],
-        description: "AI Film Director & Storyboard Engine — feed it a script (or let AI generate one) and get shot-by-shot breakdowns, camera angles, mood scoring, soundtrack vibes, and a visual timeline. Drag-and-drop editor with React Flow timeline and Recharts mood arc.",
-        tags: ["Python", "React", "FastAPI", "Groq", "Ollama", "Local-LLM", "React Flow", "Recharts", "Tailwind CSS", "SQLite", "Zustand"],
-        icon: <Film className="h-6 w-6 text-rose-400" />,
-        className: "md:col-span-2 md:row-span-1 border-rose-500/20",
-        href: "https://github.com/Swapnil-bo/CutAI",
-        architecture: ["Script Input ➔ Groq/Ollama LLM Generation", "Scene Parsing ➔ Shot Breakdown + Camera Angles", "Mood Score ➔ Soundtrack Vibe Analysis", "React Storyboard ➔ Timeline + Mood Arc Rendering"],
-    },
-    {
         title: "Jarvis",
         categories: ["Local LLMs"],
         description: "100% local AI assistant with voice, vision, memory & code execution — running on 8GB RAM. No cloud. No API keys. No excuses.",
@@ -62,6 +52,16 @@ const projects: Project[] = [
         className: "md:col-span-2 md:row-span-1 border-blue-500/20",
         href: "https://github.com/Swapnil-bo/NEXUS",
         architecture: ["User Prompt -> LangGraph Orchestrator", "Agent 1: Code Generation (7B Model)", "Agent 2: Execution & Testing", "Self-Correcting Feedback Loop"],
+    },
+    {
+        title: "CutAI",
+        categories: ["Local LLMs", "Full-Stack"],
+        description: "AI Film Director & Storyboard Engine — feed it a script (or let AI generate one) and get shot-by-shot breakdowns, camera angles, mood scoring, soundtrack vibes, and a visual timeline. Drag-and-drop editor with React Flow timeline and Recharts mood arc.",
+        tags: ["Python", "React", "FastAPI", "Groq", "Ollama", "Local-LLM", "React Flow", "Recharts", "Tailwind CSS", "SQLite", "Zustand"],
+        icon: <Film className="h-6 w-6 text-rose-400" />,
+        className: "md:col-span-2 md:row-span-1 border-rose-500/20",
+        href: "https://github.com/Swapnil-bo/CutAI",
+        architecture: ["Script Input ➔ Groq/Ollama LLM Generation", "Scene Parsing ➔ Shot Breakdown + Camera Angles", "Mood Score ➔ Soundtrack Vibe Analysis", "React Storyboard ➔ Timeline + Mood Arc Rendering"],
     },
     {
         title: "EchoChamber",
