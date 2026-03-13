@@ -9,7 +9,7 @@ const CATEGORIES = ["All", "Agentic AI", "Local LLMs", "ML & Data Science", "Ful
 
 type Project = {
     title: string;
-    category: string;
+    categories: string[];
     description: string;
     tags: string[];
     icon: React.ReactNode;
@@ -21,8 +21,18 @@ type Project = {
 
 const projects: Project[] = [
     {
+        title: "CutAI",
+        categories: ["Local LLMs", "Full-Stack"],
+        description: "AI Film Director & Storyboard Engine — feed it a script (or let AI generate one) and get shot-by-shot breakdowns, camera angles, mood scoring, soundtrack vibes, and a visual timeline. Drag-and-drop editor with React Flow timeline and Recharts mood arc.",
+        tags: ["Python", "React", "FastAPI", "Groq", "Ollama", "Local-LLM", "React Flow", "Recharts", "Tailwind CSS", "SQLite", "Zustand"],
+        icon: <Film className="h-6 w-6 text-rose-400" />,
+        className: "md:col-span-2 md:row-span-1 border-rose-500/20",
+        href: "https://github.com/Swapnil-bo/CutAI",
+        architecture: ["Script Input ➔ Groq/Ollama LLM Generation", "Scene Parsing ➔ Shot Breakdown + Camera Angles", "Mood Score ➔ Soundtrack Vibe Analysis", "React Storyboard ➔ Timeline + Mood Arc Rendering"],
+    },
+    {
         title: "Jarvis",
-        category: "Local LLMs",
+        categories: ["Local LLMs"],
         description: "100% local AI assistant with voice, vision, memory & code execution — running on 8GB RAM. No cloud. No API keys. No excuses.",
         tags: ["Python", "AI Assistant", "Voice Assistant", "Local-LLM", "Phi-3", "Ollama", "Apple Silicon", "MacOS", "Code Execution", "Whisper", "MLX"],
         icon: <Mic className="h-6 w-6 text-emerald-400" />,
@@ -45,7 +55,7 @@ const projects: Project[] = [
     },
     {
         title: "NEXUS",
-        category: "Agentic AI",
+        categories: ["Agentic AI"],
         description: "A local multi-agent system that plans, writes, executes, and self-corrects Python code — powered by LangGraph and a 7B parameter model.",
         tags: ["Python", "Multi-Agent", "Agentic Workflows", "Ollama", "LangGraph", "Pydantic", "LangChain"],
         icon: <Network className="h-6 w-6 text-blue-400" />,
@@ -55,7 +65,7 @@ const projects: Project[] = [
     },
     {
         title: "EchoChamber",
-        category: "Agentic AI",
+        categories: ["Agentic AI"],
         description: "AI-powered auto-podcast generator. Drop a URL, PDF, or Wikipedia page — get a 5-minute debate podcast with two AI personas.",
         tags: ["Python", "Multi-Agent", "Agentic Workflows", "PyDub", "LangChain", "FastAPI", "Edge-TTS", "React", "Gemini", "TypeScript", "Vite"],
         icon: <Podcast className="h-6 w-6 text-emerald-400" />,
@@ -65,7 +75,7 @@ const projects: Project[] = [
     },
     {
         title: "Butterfly Effect Simulator",
-        category: "Full-Stack",
+        categories: ["Full-Stack"],
         description: "AI-powered butterfly effect simulator — input a small decision, get a 10-year consequence chain as an interactive React Flow graph. FastAPI + Groq + Next.js.",
         tags: ["Python", "FastAPI", "Next.js", "React Flow", "Groq", "Ollama", "TypeScript"],
         icon: <Waypoints className="h-6 w-6 text-fuchsia-400" />,
@@ -75,7 +85,7 @@ const projects: Project[] = [
     },
     {
         title: "Chat-Vibe",
-        category: "Full-Stack",
+        categories: ["Full-Stack"],
         description: "High-performance WhatsApp analyzer built with Next.js 14 and Gemini for deep psychological insights.",
         tags: ["Next.js", "TypeScript", "Generative AI", "Web Workers", "Data Visualization", "Recharts", "Privacy First"],
         icon: <MessageSquare className="h-6 w-6 text-cyan-400" />,
@@ -85,7 +95,7 @@ const projects: Project[] = [
     },
     {
         title: "ResumeRank-AI",
-        category: "Agentic AI",
+        categories: ["Agentic AI"],
         description: "Automated screening agent using Gemini 2.5 Flash to rank resumes via LLM-based gap analysis.",
         tags: ["Python", "Agentic Workflows", "Pandas", "JSON", "PyPDF", "Gemini", "Streamlit"],
         icon: <Briefcase className="h-6 w-6 text-purple-400" />,
@@ -95,7 +105,7 @@ const projects: Project[] = [
     },
     {
         title: "CineMatch",
-        category: "ML & Data Science",
+        categories: ["ML & Data Science"],
         description: "Collaborative filtering engine built with Scikit-learn and Streamlit for personalized movie discovery.",
         tags: ["Python", "Pandas", "NumPy", "Scipy", "Scikit-learn", "Streamlit"],
         icon: <Film className="h-6 w-6 text-pink-400" />,
@@ -105,7 +115,7 @@ const projects: Project[] = [
     },
     {
         title: "House Price Predictor",
-        category: "ML & Data Science",
+        categories: ["ML & Data Science"],
         description: "End-to-end House Price Prediction pipeline featuring advanced EDA, multicollinearity handling (VIF), and Scikit-Learn pipelines for robust regression modeling.",
         tags: ["Python", "Pandas", "Matplotlib", "Seaborn", "Regression", "Scikit-Learn", "Streamlit"],
         icon: <Home className="h-6 w-6 text-emerald-400" />,
@@ -115,7 +125,7 @@ const projects: Project[] = [
     },
     {
         title: "AI-Language Translator",
-        category: "Local LLMs",
+        categories: ["Local LLMs"],
         description: "Privacy-focused offline translator using Streamlit and MarianMT, supporting bidirectional translation for 6+ language pairs.",
         tags: ["Python", "HuggingFace", "Local-LLM", "MarianMT", "Transformers", "PyTorch", "Streamlit"],
         icon: <Globe className="h-6 w-6 text-indigo-400" />,
@@ -140,7 +150,7 @@ export function BentoProjects() {
     const [expandedIds, setExpandedIds] = useState<Record<string, boolean>>({});
 
     const filteredProjects = projects.filter(
-        (project) => activeCategory === "All" || project.category === activeCategory
+        (project) => activeCategory === "All" || project.categories.includes(activeCategory)
     );
 
     return (
