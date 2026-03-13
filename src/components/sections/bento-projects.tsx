@@ -71,6 +71,7 @@ const projects: Project[] = [
         icon: <Waypoints className="h-6 w-6 text-fuchsia-400" />,
         className: "md:col-span-1 md:row-span-1 border-fuchsia-500/20",
         href: "https://github.com/Swapnil-bo/Butterfly-Effect-Simulator",
+        architecture: ["User Decision Input ➔ FastAPI Backend", "Dual LLM Routing (Ollama Qwen 3B / Groq Llama 3.1)", "JSON Schema Validation & Retry Loop", "React Flow Interactive Graph Rendering"],
     },
     {
         title: "Chat-Vibe",
@@ -80,6 +81,7 @@ const projects: Project[] = [
         icon: <MessageSquare className="h-6 w-6 text-cyan-400" />,
         className: "md:col-span-1 md:row-span-1",
         href: "https://github.com/Swapnil-bo/Chat-Vibe",
+        architecture: ["Local WhatsApp .txt Log Ingestion", "Web Worker Regex Parsing (Off-main-thread)", "Gemini 2.5 Flash Psychological Analysis", "Recharts Metric Visualization"],
     },
     {
         title: "ResumeRank-AI",
@@ -89,6 +91,7 @@ const projects: Project[] = [
         icon: <Briefcase className="h-6 w-6 text-purple-400" />,
         className: "md:col-span-1 md:row-span-1",
         href: "https://github.com/Swapnil-bo/ResumeRank-AI",
+        architecture: ["Batch PyPDF Resume Ingestion & Extraction", "Gemini 2.5 Flash Chain-of-Thought Analysis", "Skill Gap Identification & Scoring", "Streamlit Leaderboard Visualization"],
     },
     {
         title: "CineMatch",
@@ -98,6 +101,7 @@ const projects: Project[] = [
         icon: <Film className="h-6 w-6 text-pink-400" />,
         className: "md:col-span-2 md:row-span-1",
         href: "https://github.com/Swapnil-bo/Movie-Recommendation-System",
+        architecture: ["MovieLens Data Filtering & Preprocessing", "User-Item Pivot Table to CSR Sparse Matrix", "Scikit-learn Cosine Similarity Computation", "Top-5 Recommendation Delivery via Streamlit"],
     },
     {
         title: "House Price Predictor",
@@ -107,6 +111,7 @@ const projects: Project[] = [
         icon: <Home className="h-6 w-6 text-emerald-400" />,
         className: "md:col-span-1 md:row-span-1 border-emerald-500/20",
         href: "https://github.com/Swapnil-bo/House-Price-Predictor",
+        architecture: ["Data Preprocessing & VIF Collinearity Check", "Scikit-Learn Regression Pipeline Engineering", "Cross-Validation & Residual Diagnostics", "Streamlit Explainable AI (XAI) Dashboard"],
     },
     {
         title: "AI-Language Translator",
@@ -116,6 +121,7 @@ const projects: Project[] = [
         icon: <Globe className="h-6 w-6 text-indigo-400" />,
         className: "md:col-span-1 md:row-span-1 border-indigo-500/20",
         href: "https://github.com/Swapnil-bo/AI-Language-Translator",
+        architecture: ["Offline MarianMT Model Initialization", "Hugging Face Transformer Tokenization", "Local Neural Machine Translation Inference", "Streamlit UI Rendering"],
     },
 ];
 
