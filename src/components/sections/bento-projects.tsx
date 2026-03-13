@@ -43,7 +43,7 @@ const projects = [
         title: "EchoChamber",
         category: "Agentic AI",
         description: "AI-powered auto-podcast generator. Drop a URL, PDF, or Wikipedia page — get a 5-minute debate podcast with two AI personas.",
-        tags: ["Multi-Agent", "PyDub", "LangChain", "FastAPI", "Edge-TTS", "React", "Gemini", "TypeScript", "Vite"],
+        tags: ["Python", "Multi-Agent", "Agentic Workflows", "PyDub", "LangChain", "FastAPI", "Edge-TTS", "React", "Gemini", "TypeScript", "Vite"],
         icon: <Podcast className="h-6 w-6 text-emerald-400" />,
         className: "md:col-span-2 md:row-span-1 border-emerald-500/20",
         href: "https://github.com/Swapnil-bo/EchoChamber",
