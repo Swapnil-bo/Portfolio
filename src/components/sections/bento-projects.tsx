@@ -65,7 +65,7 @@ const projects: Project[] = [
     },
     {
         title: "EchoChamber",
-        categories: ["Agentic AI"],
+        categories: ["Agentic AI", "Full-Stack"],
         description: "AI-powered auto-podcast generator. Drop a URL, PDF, or Wikipedia page — get a 5-minute debate podcast with two AI personas.",
         tags: ["Python", "Multi-Agent", "Agentic Workflows", "PyDub", "LangChain", "FastAPI", "Edge-TTS", "React", "Gemini", "TypeScript", "Vite"],
         icon: <Podcast className="h-6 w-6 text-emerald-400" />,
