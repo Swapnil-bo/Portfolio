@@ -32,7 +32,7 @@ const skills = [
   'Python', 'PyTorch', 'TensorFlow', 'Scikit-Learn', 'LangChain', 'LangGraph', 'Ollama', 'Hugging Face',
   'Groq', 'Gemini', 'RAG', 'ChromaDB', 'Vector DBs',
   'React', 'Next.js', 'FastAPI', 'Tailwind CSS', 'TypeScript', 'WebSockets', 'Vite', 'Flask', 'NumPy', 'Pandas',
-  'Claude Code', 'Git', 'GitHub', 'Vercel', 'Render', 'Markdown', 'ChromaDB', 'MySQL', 'Streamlit', 'Cursor', 'Antigravity', 'macOS',
+  'Claude Code', 'Cursor', 'Antigravity', 'Git', 'GitHub', 'Vercel', 'Render', 'Markdown', 'ChromaDB', 'MySQL', 'Streamlit', 'macOS',
 ]
 
 function About() {
