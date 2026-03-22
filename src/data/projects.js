@@ -60,7 +60,7 @@ export const projects = [
     category: "Full-Stack",
     featured: false,
     github: "https://github.com/Swapnil-bo/Chat-Vibe",
-    demo: null
+    demo: "https://chat-vibe-psi.vercel.app/"
   },
   {
     name: "ResumeRank-AI",
