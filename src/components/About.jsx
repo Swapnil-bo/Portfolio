@@ -17,7 +17,7 @@ const infoCards = [
   {
     emoji: '🎓',
     label: 'STUDYING',
-    value: 'B.Tech CS · Brainware University',
+    value: 'B.Tech CSE - AI · Brainware University',
     borderColor: 'var(--neon-cyan)',
   },
   {
