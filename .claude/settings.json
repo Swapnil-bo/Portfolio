@@ -22,7 +22,8 @@
       "Bash(git commit -m \"feat: scroll progress bar\")",
       "Bash(git commit -m \"feat: navbar with resume and internship status\")",
       "Bash(git commit -m \"feat: interactive particle background\")",
-      "Bash(git commit -m \"feat: hero section with animations\")"
+      "Bash(git commit -m \"feat: hero section with animations\")",
+      "Bash(git commit -m \"feat: about section with tech arsenal\")"
     ]
   }
 }
