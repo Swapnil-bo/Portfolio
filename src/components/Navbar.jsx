@@ -106,7 +106,7 @@ function Navbar() {
           <div className="hidden md:flex items-center gap-3">
             {/* Resume Button */}
             <a
-              href="/Swapnil_Hazra_Resume.pdf"
+              href="/Swapnil_Hazra_Resume_.pdf"
               download
               className="font-jetbrains text-xs px-4 py-1.5 border rounded transition-all duration-150 hover:bg-[rgba(0,212,255,0.08)]"
               style={{
@@ -196,7 +196,7 @@ function Navbar() {
               transition={{ delay: navLinks.length * 0.08, duration: 0.25 }}
             >
               <a
-                href="/Swapnil_Hazra_Resume.pdf"
+                href="/Swapnil_Hazra_Resume_.pdf"
                 download
                 className="font-jetbrains text-sm px-5 py-2 border rounded transition-all duration-150"
                 style={{ color: 'var(--neon-cyan)', borderColor: 'var(--neon-cyan)' }}
