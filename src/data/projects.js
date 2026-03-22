@@ -24,7 +24,7 @@ export const projects = [
     category: "Local LLMs",
     featured: true,
     github: "https://github.com/Swapnil-bo/CutAI",
-    demo: "https://cut-ai.vercel.app"
+    demo: "https://cut-ai-nbx8.vercel.app/"
   },
   {
     name: "LoreWeaver",
