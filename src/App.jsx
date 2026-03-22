@@ -1,21 +1,48 @@
-function App() {
-  return (
-    <main>
-      {/* Noise overlay for atmospheric grain effect */}
-      <div className="noise-overlay" />
+import { useState } from 'react'
+import { AnimatePresence } from 'framer-motion'
+import BootSequence from './components/BootSequence'
+import ScrollProgress from './components/ScrollProgress'
+import Navbar from './components/Navbar'
+import ParticleField from './components/ParticleField'
+import Hero from './components/Hero'
+import About from './components/About'
+import Projects from './components/Projects'
+import Timeline from './components/Timeline'
+import Contact from './components/Contact'
+import Footer from './components/Footer'
 
-      {/* Components will be added in subsequent steps */}
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="font-syne text-4xl font-bold text-text-primary mb-4">
-            Neural Terminal
-          </h1>
-          <p className="font-mono text-text-secondary text-glow">
-            &gt; system initialized. all modules standing by._
-          </p>
-        </div>
-      </div>
-    </main>
+function App() {
+  const [booted, setBooted] = useState(() => {
+    return sessionStorage.getItem('booted') === 'true'
+  })
+
+  const handleBootComplete = () => {
+    sessionStorage.setItem('booted', 'true')
+    setBooted(true)
+  }
+
+  return (
+    <>
+      <AnimatePresence mode="wait">
+        {!booted && (
+          <BootSequence key="boot" onComplete={handleBootComplete} />
+        )}
+      </AnimatePresence>
+
+      {booted && (
+        <main>
+          <div className="noise-overlay" />
+          <ScrollProgress />
+          <Navbar />
+          <Hero />
+          <About />
+          <Projects />
+          <Timeline />
+          <Contact />
+          <Footer />
+        </main>
+      )}
+    </>
   )
 }
 

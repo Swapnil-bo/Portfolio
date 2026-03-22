@@ -15,7 +15,9 @@
       "Bash(git remote add origin https://github.com/Swapnil-bo/Portfolio.git)",
       "Bash(git push -u origin main)",
       "Bash(git commit -m \"feat: add project and timeline data\")",
-      "Bash(git push origin main)"
+      "Bash(git push origin main)",
+      "Bash(timeout 6 npx vite)",
+      "Bash(git commit -m \"feat: app shell with section stubs\")"
     ]
   }
 }
