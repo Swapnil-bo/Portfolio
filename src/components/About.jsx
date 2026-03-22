@@ -29,10 +29,10 @@ const infoCards = [
 ]
 
 const skills = [
-  'Python', 'PyTorch', 'LangChain', 'LangGraph', 'Ollama', 'Hugging Face',
+  'Python', 'PyTorch', 'TensorFlow', 'Scikit-Learn', 'LangChain', 'LangGraph', 'Ollama', 'Hugging Face',
   'Groq', 'Gemini', 'RAG', 'ChromaDB', 'Vector DBs',
-  'React', 'Next.js', 'FastAPI', 'Tailwind CSS', 'TypeScript', 'WebSockets', 'Vite',
-  'Claude Code', 'Git', 'Streamlit', 'Cursor', 'Antigravity', 'macOS',
+  'React', 'Next.js', 'FastAPI', 'Tailwind CSS', 'TypeScript', 'WebSockets', 'Vite', 'Flask', 'NumPy', 'Pandas',
+  'Claude Code', 'Git', 'GitHub', 'Vercel', 'Render', 'Markdown', 'ChromaDB', 'MySQL', 'Streamlit', 'Cursor', 'Antigravity', 'macOS',
 ]
 
 function About() {

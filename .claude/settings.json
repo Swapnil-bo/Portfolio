@@ -36,7 +36,8 @@
       "Bash(git commit -m \"docs: add project README\")",
       "Bash(git commit -m \"fix: update CutAI live demo URL\")",
       "Bash(git commit -m \"fix: update degree to B.Tech CSE-AI\")",
-      "Bash(git commit -m \"fix: update tech stack chips\")"
+      "Bash(git commit -m \"fix: update tech stack chips\")",
+      "Bash(git commit -m \"feat: expand tech stack with ML and DevOps tools\")"
     ]
   }
 }
