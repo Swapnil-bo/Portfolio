@@ -132,7 +132,7 @@ function Navbar() {
 
           {/* Mobile Hamburger */}
           <button
-            className="md:hidden flex flex-col gap-[5px] bg-transparent border-none cursor-pointer p-2"
+            className="md:hidden flex flex-col items-center justify-center gap-[5px] bg-transparent border-none cursor-pointer w-11 h-11"
             onClick={() => setMobileOpen(prev => !prev)}
             aria-label="Toggle menu"
           >
@@ -165,7 +165,7 @@ function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8"
+            className="fixed inset-0 z-[45] flex flex-col items-center justify-center gap-8"
             style={{ background: 'rgba(6, 6, 14, 0.95)' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -176,7 +176,7 @@ function Navbar() {
               <motion.button
                 key={link.id}
                 onClick={() => scrollTo(link.id)}
-                className="font-syne text-2xl font-semibold bg-transparent border-none cursor-pointer"
+                className="font-syne text-2xl font-semibold bg-transparent border-none cursor-pointer py-2 px-4 min-h-[44px]"
                 style={{ color: activeSection === link.id ? 'var(--neon-green)' : 'var(--text-primary)' }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

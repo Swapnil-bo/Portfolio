@@ -26,7 +26,8 @@
       "Bash(git commit -m \"feat: about section with tech arsenal\")",
       "Bash(git commit -m \"feat: filterable project grid\")",
       "Bash(git commit -m \"feat: journey timeline\")",
-      "Bash(git commit -m \"feat: contact and footer\")"
+      "Bash(git commit -m \"feat: contact and footer\")",
+      "Bash(git commit -m \"polish: responsive and performance fixes\")"
     ]
   }
 }

@@ -47,7 +47,7 @@ function Projects() {
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className="font-jetbrains text-xs px-4 py-1.5 rounded border transition-all duration-150 cursor-pointer"
+              className="font-jetbrains text-xs px-4 py-2.5 md:py-1.5 rounded border transition-all duration-150 cursor-pointer"
               style={{
                 background: activeFilter === filter ? 'var(--neon-green)' : 'var(--bg-surface)',
                 color: activeFilter === filter ? 'var(--bg-void)' : 'var(--text-secondary)',

@@ -12,25 +12,15 @@ function ProjectCard({ project, index }) {
 
   return (
     <motion.div
-      layout
+      layout="position"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 20 }}
+      exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.3, delay: index * 0.05 }}
-      className="card-hover-scan p-5 border rounded transition-all duration-200 cursor-default group"
+      className="card-hover-scan project-card p-5 border rounded cursor-default"
       style={{
         background: 'var(--bg-surface)',
         borderColor: 'var(--border-dim)',
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = 'translateY(-4px)'
-        e.currentTarget.style.borderColor = 'var(--border-glow)'
-        e.currentTarget.style.boxShadow = '0 0 20px rgba(0,255,136,0.15), 0 0 60px rgba(0,255,136,0.05)'
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = 'translateY(0)'
-        e.currentTarget.style.borderColor = 'var(--border-dim)'
-        e.currentTarget.style.boxShadow = 'none'
       }}
     >
       {/* Top row: category + featured badge */}

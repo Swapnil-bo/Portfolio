@@ -162,7 +162,7 @@ function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={social.label}
-              className="flex items-center gap-2 font-mono text-sm px-3 py-2 rounded transition-all duration-150"
+              className="flex items-center gap-2 font-mono text-sm px-3 py-3 md:py-2 rounded transition-all duration-150 min-h-[44px]"
               style={{ color: 'var(--text-secondary)' }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.color = 'var(--neon-green)'
