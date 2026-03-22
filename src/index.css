@@ -1,0 +1,304 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+/* ========================================
+   NEURAL TERMINAL — Design System
+   ======================================== */
+
+/* --- CSS Variables (Color Palette) --- */
+:root {
+  --bg-void: #06060e;
+  --bg-surface: #0c0c18;
+  --bg-elevated: #13132a;
+  --border-dim: rgba(0, 255, 136, 0.06);
+  --border-glow: rgba(0, 255, 136, 0.25);
+  --neon-green: #00ff88;
+  --neon-cyan: #00d4ff;
+  --neon-hot: #ff3366;
+  --neon-purple: #a855f7;
+  --text-primary: #e4e4e7;
+  --text-secondary: #71717a;
+  --text-ghost: #3f3f50;
+}
+
+/* --- Base Reset & Defaults --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--bg-void);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ========================================
+   GLOW UTILITIES
+   ======================================== */
+
+.glow-green {
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.15), 0 0 60px rgba(0, 255, 136, 0.05);
+}
+
+.glow-green-lg {
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.25), 0 0 80px rgba(0, 255, 136, 0.08);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.15);
+}
+
+.glow-hot {
+  box-shadow: 0 0 20px rgba(255, 51, 102, 0.2);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5), 0 0 40px rgba(0, 255, 136, 0.15);
+}
+
+/* ========================================
+   ATMOSPHERIC EFFECTS
+   ======================================== */
+
+/* --- Scanlines (full viewport overlay) --- */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* --- Vignette (radial edge darkening) --- */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 50%,
+    rgba(6, 6, 14, 0.4) 80%,
+    rgba(6, 6, 14, 0.8) 100%
+  );
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* --- Noise Texture Overlay --- */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9997;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* --- Grid Underlay (hero background) --- */
+.grid-underlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(var(--neon-green) 1px, transparent 1px),
+    linear-gradient(90deg, var(--neon-green) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+/* ========================================
+   TYPED CURSOR
+   ======================================== */
+
+.typed-cursor::after {
+  content: '_';
+  animation: blink 1s step-end infinite;
+  color: var(--neon-green);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ========================================
+   GLITCH HOVER EFFECT
+   ======================================== */
+
+.glitch-hover {
+  position: relative;
+}
+
+.glitch-hover:hover {
+  animation: glitch 200ms linear;
+}
+
+@keyframes glitch {
+  0% {
+    clip-path: inset(40% 0 61% 0);
+    transform: translate(-2px, 2px);
+  }
+  20% {
+    clip-path: inset(92% 0 1% 0);
+    transform: translate(2px, -1px);
+  }
+  40% {
+    clip-path: inset(43% 0 1% 0);
+    transform: translate(-1px, 1px);
+  }
+  60% {
+    clip-path: inset(25% 0 58% 0);
+    transform: translate(1px, -2px);
+  }
+  80% {
+    clip-path: inset(54% 0 7% 0);
+    transform: translate(-2px, 1px);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+  }
+}
+
+/* ========================================
+   PULSE DOT (Status Indicator)
+   ======================================== */
+
+.pulse-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--neon-green);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+}
+
+/* ========================================
+   CARD SCANLINE SWEEP (hover effect)
+   ======================================== */
+
+.card-hover-scan {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-hover-scan::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--neon-green);
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card-hover-scan:hover::before {
+  animation: scanline-sweep 600ms ease-out forwards;
+}
+
+@keyframes scanline-sweep {
+  0% {
+    top: -2px;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+/* ========================================
+   SCROLL INDICATOR BOUNCE
+   ======================================== */
+
+@keyframes bounce-down {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+.scroll-indicator {
+  animation: bounce-down 2s ease-in-out infinite;
+}
+
+/* ========================================
+   SELECTION STYLING
+   ======================================== */
+
+::selection {
+  background: rgba(0, 255, 136, 0.2);
+  color: var(--text-primary);
+}
+
+/* ========================================
+   SCROLLBAR STYLING
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-void);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 136, 0.15);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 136, 0.3);
+}

@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create vite@latest . -- --template react)",
+      "Read(//d/AI MEGA PROJECTS/**)",
+      "Bash(npm install)",
+      "Bash(npm install framer-motion)",
+      "Bash(npm install -D tailwindcss @tailwindcss/vite)",
+      "Bash(npx vite build)",
+      "Bash(timeout 8 npx vite --host)",
+      "Bash(git init)",
+      "Bash(git add -A)",
+      "Bash(git commit -m \"init: project scaffold with design system\")"
+    ]
+  }
+}
