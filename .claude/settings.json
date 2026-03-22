@@ -20,7 +20,8 @@
       "Bash(git commit -m \"feat: app shell with section stubs\")",
       "Bash(git commit -m \"feat: boot sequence screen\")",
       "Bash(git commit -m \"feat: scroll progress bar\")",
-      "Bash(git commit -m \"feat: navbar with resume and internship status\")"
+      "Bash(git commit -m \"feat: navbar with resume and internship status\")",
+      "Bash(git commit -m \"feat: interactive particle background\")"
     ]
   }
 }
