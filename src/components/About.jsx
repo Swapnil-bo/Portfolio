@@ -30,9 +30,9 @@ const infoCards = [
 
 const skills = [
   'Python', 'PyTorch', 'TensorFlow', 'Scikit-Learn', 'LangChain', 'LangGraph', 'Ollama', 'Hugging Face',
-  'Groq', 'Gemini', 'RAG', 'ChromaDB', 'Vector DBs',
+  'Groq', 'Gemini', 'RAG', 'ChromaDB', 'Vector DBs', 'MySQL',
   'React', 'Next.js', 'FastAPI', 'Tailwind CSS', 'TypeScript', 'WebSockets', 'Vite', 'Flask', 'NumPy', 'Pandas',
-  'Git', 'GitHub', 'Vercel', 'Render', 'Markdown', 'ChromaDB', 'MySQL', 'Streamlit',
+  'Git', 'GitHub', 'Vercel', 'Render', 'Markdown', 'Streamlit',
   'Claude Code', 'Cursor', 'Antigravity', 'macOS',
 ]
 
