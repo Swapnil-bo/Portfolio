@@ -38,7 +38,8 @@
       "Bash(git commit -m \"fix: update degree to B.Tech CSE-AI\")",
       "Bash(git commit -m \"fix: update tech stack chips\")",
       "Bash(git commit -m \"feat: expand tech stack with ML and DevOps tools\")",
-      "Bash(git commit -m \"fix: reorder Claude Code before Cursor\")"
+      "Bash(git commit -m \"fix: reorder Claude Code before Cursor\")",
+      "Bash(git commit -m \"fix: move tools to end of tech stack\")"
     ]
   }
 }
