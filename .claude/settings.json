@@ -10,7 +10,12 @@
       "Bash(timeout 8 npx vite --host)",
       "Bash(git init)",
       "Bash(git add -A)",
-      "Bash(git commit -m \"init: project scaffold with design system\")"
+      "Bash(git commit -m \"init: project scaffold with design system\")",
+      "Bash(git branch -M main)",
+      "Bash(git remote add origin https://github.com/Swapnil-bo/Portfolio.git)",
+      "Bash(git push -u origin main)",
+      "Bash(git commit -m \"feat: add project and timeline data\")",
+      "Bash(git push origin main)"
     ]
   }
 }
