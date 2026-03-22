@@ -24,7 +24,7 @@ export const timeline = [
     year: "2023",
     title: "Started at Brainware University",
     desc: "Began B.Tech in Computer Science. First lines of Python. First encounter with AI/ML. The spark that started everything.",
-    tags: ["Python", "CS Fundamentals"],
+    tags: ["Python", "Java", "CS Fundamentals"],
     icon: "🎓"
   }
 ];
