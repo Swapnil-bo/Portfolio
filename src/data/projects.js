@@ -21,7 +21,7 @@ export const projects = [
     name: "CutAI",
     desc: "AI Film Director & Storyboard Engine — feed it a script, get shot-by-shot breakdowns, camera angles, mood arcs, and a drag-and-drop visual timeline.",
     tags: ["React", "FastAPI", "Groq", "Ollama", "React Flow", "Recharts", "Zustand"],
-    category: "Full-Stack",
+    category: "Local LLMs",
     featured: true,
     github: "https://github.com/Swapnil-bo/CutAI",
     demo: "https://cut-ai.vercel.app"
@@ -30,7 +30,7 @@ export const projects = [
     name: "LoreWeaver",
     desc: "Multiplayer tabletop RPG with a local Mistral 7B Dungeon Master, RAG/ChromaDB memory, React Flow world map, and real-time WebSocket multiplayer.",
     tags: ["FastAPI", "Mistral 7B", "ChromaDB", "React Flow", "WebSocket", "RAG"],
-    category: "Full-Stack",
+    category: "Local LLMs",
     featured: false,
     github: "https://github.com/Swapnil-bo/LoreWeaver",
     demo: null

@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { projects } from '../data/projects'
 import ProjectCard from './ProjectCard'
 
-const filters = ['All', 'Agentic AI', 'Full-Stack', 'ML & Data Science', 'Local LLMs']
+const filters = ['All', 'Agentic AI', 'Local LLMs', 'ML & Data Science', 'Full-Stack']
 
 function Projects() {
   const [activeFilter, setActiveFilter] = useState('All')
