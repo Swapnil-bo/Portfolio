@@ -24,7 +24,8 @@
       "Bash(git commit -m \"feat: interactive particle background\")",
       "Bash(git commit -m \"feat: hero section with animations\")",
       "Bash(git commit -m \"feat: about section with tech arsenal\")",
-      "Bash(git commit -m \"feat: filterable project grid\")"
+      "Bash(git commit -m \"feat: filterable project grid\")",
+      "Bash(git commit -m \"feat: journey timeline\")"
     ]
   }
 }
