@@ -43,7 +43,8 @@
       "Bash(git commit -m \"fix: remove duplicate ChromaDB and reorder MySQL\")",
       "Bash(git commit -m \"feat: add CineMatch live demo link\")",
       "Bash(git commit -m \"feat: add AI-Language Translator live demo link\")",
-      "Bash(git commit -m \"feat: add House Price Predictor live demo link\")"
+      "Bash(git commit -m \"feat: add House Price Predictor live demo link\")",
+      "Bash(git commit -m \"feat: add TruthLens live demo link\")"
     ]
   }
 }

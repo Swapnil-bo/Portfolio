@@ -87,7 +87,7 @@ export const projects = [
     category: "ML & Data Science",
     featured: false,
     github: "https://github.com/Swapnil-bo/TruthLens",
-    demo: null
+    demo: "https://truthlens-b94mdhrr5aivpntlnzpju6.streamlit.app/"
   },
   {
     name: "CineMatch",
