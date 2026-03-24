@@ -45,7 +45,8 @@
       "Bash(git commit -m \"feat: add AI-Language Translator live demo link\")",
       "Bash(git commit -m \"feat: add House Price Predictor live demo link\")",
       "Bash(git commit -m \"feat: add TruthLens live demo link\")",
-      "Bash(git commit -m \"feat: remove BioSignal Decoder project\")"
+      "Bash(git commit -m \"feat: remove BioSignal Decoder project\")",
+      "Bash(git commit -m \"fix: remove EchoChamber live demo link\")"
     ]
   }
 }

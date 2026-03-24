@@ -42,7 +42,7 @@ export const projects = [
     category: "Full-Stack",
     featured: false,
     github: "https://github.com/Swapnil-bo/EchoChamber",
-    demo: "https://echo-chamber-ai.vercel.app"
+    demo: null
   },
   {
     name: "Butterfly Effect Simulator",
