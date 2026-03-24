@@ -105,7 +105,7 @@ export const projects = [
     category: "ML & Data Science",
     featured: false,
     github: "https://github.com/Swapnil-bo/House-Price-Predictor",
-    demo: null
+    demo: "https://house-price-predictor-h4xszy5zhgrt42wjtcwkhb.streamlit.app/"
   },
   {
     name: "AI-Language Translator",
