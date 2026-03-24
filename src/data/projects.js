@@ -114,6 +114,6 @@ export const projects = [
     category: "Local LLMs",
     featured: false,
     github: "https://github.com/Swapnil-bo/AI-Language-Translator",
-    demo: null
+    demo: "https://ai-language-translator-crd3s3hykkbdu6wec2o6qj.streamlit.app/"
   }
 ];
