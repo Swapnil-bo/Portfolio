@@ -24,7 +24,7 @@ export const projects = [
     category: "Agentic AI",
     featured: true,
     github: "https://github.com/Swapnil-bo/FossilAI",
-    demo: null
+    demo: "https://fossil-ai.vercel.app/"
   },
   {
     name: "CutAI",
