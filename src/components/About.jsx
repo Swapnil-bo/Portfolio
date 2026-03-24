@@ -80,7 +80,7 @@ function About() {
             <p>
               Currently on Day X of my{' '}
               <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>100 Days of Vibe Coding</span>{' '}
-              challenge — shipping an open-source AI project every few days. 13 projects and counting. Every
+              challenge — shipping an open-source AI project every few days. 12 projects and counting. Every
               line of code is public.
             </p>
             <p>

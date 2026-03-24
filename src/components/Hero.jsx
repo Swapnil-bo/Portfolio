@@ -5,7 +5,7 @@ import ParticleField from './ParticleField'
 const typedText = '> initializing swapnil_hazra...'
 
 const stats = [
-  { value: '13', label: 'Projects Shipped' },
+  { value: '12', label: 'Projects Shipped' },
   { value: '100', label: 'Days Challenge' },
   { value: '6+', label: 'Agent Systems' },
 ]

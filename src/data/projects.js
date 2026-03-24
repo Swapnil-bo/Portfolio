@@ -72,15 +72,6 @@ export const projects = [
     demo: null
   },
   {
-    name: "BioSignal Decoder",
-    desc: "EEG mental state classifier — brainwave signals → wavelet + FFT features → SVM + Random Forest ensemble. Zero LLMs, pure classical ML.",
-    tags: ["Python", "MNE", "SciPy", "PyWavelets", "Scikit-learn", "Streamlit"],
-    category: "ML & Data Science",
-    featured: false,
-    github: "https://github.com/Swapnil-bo/BioSignal",
-    demo: null
-  },
-  {
     name: "TruthLens",
     desc: "Fake news detector with 5-signal credibility scoring and LIME phrase-level explainability. XGBoost + spaCy pipeline with visual breakdown.",
     tags: ["Python", "XGBoost", "spaCy", "LIME", "Plotly", "Streamlit"],
