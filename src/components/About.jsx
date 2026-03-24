@@ -86,7 +86,7 @@ function About() {
             <p>
               I don't just use AI frameworks. I stress-test them, break them, and rebuild them until they work
               on an{' '}
-              <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>RTX 3050 with 8GB RAM</span>.
+              <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>RTX 3050 with 8GB RAM and a MacBook Air M1</span>.
               Constraints breed creativity.
             </p>
           </div>
