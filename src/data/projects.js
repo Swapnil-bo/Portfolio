@@ -18,6 +18,15 @@ export const projects = [
     demo: null
   },
   {
+    name: "FossilAI",
+    desc: "AI Code Archaeologist — upload any GitHub repo and FossilAI reverse-engineers its architecture. Interactive dependency graph, auto-generated ADRs, tech debt heatmap, and refactor simulations.",
+    tags: ["React", "FastAPI", "Gemini", "Groq", "React Flow", "Python"],
+    category: "Agentic AI",
+    featured: true,
+    github: "https://github.com/Swapnil-bo/FossilAI",
+    demo: null
+  },
+  {
     name: "CutAI",
     desc: "AI Film Director & Storyboard Engine — feed it a script, get shot-by-shot breakdowns, camera angles, mood arcs, and a drag-and-drop visual timeline.",
     tags: ["React", "FastAPI", "Groq", "Ollama", "React Flow", "Recharts", "Zustand"],
