@@ -16,7 +16,7 @@ export const timeline = [
   {
     year: "2026",
     title: "ML & Data Science Foundations",
-    desc: "Built the fundamentals: EEG signal classification, fake news detection, recommendation engines, regression pipelines. Classical ML before the LLM wave — SVM, XGBoost, Random Forest.",
+    desc: "Built the fundamentals: fake news detection, recommendation engines, regression pipelines. Classical ML before the LLM wave — SVM, XGBoost, Random Forest.",
     tags: ["Scikit-learn", "XGBoost", "spaCy", "Streamlit"],
     icon: "📊"
   },
