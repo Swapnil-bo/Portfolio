@@ -40,7 +40,8 @@
       "Bash(git commit -m \"feat: expand tech stack with ML and DevOps tools\")",
       "Bash(git commit -m \"fix: reorder Claude Code before Cursor\")",
       "Bash(git commit -m \"fix: move tools to end of tech stack\")",
-      "Bash(git commit -m \"fix: remove duplicate ChromaDB and reorder MySQL\")"
+      "Bash(git commit -m \"fix: remove duplicate ChromaDB and reorder MySQL\")",
+      "Bash(git commit -m \"feat: add CineMatch live demo link\")"
     ]
   }
 }

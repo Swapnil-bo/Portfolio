@@ -96,7 +96,7 @@ export const projects = [
     category: "ML & Data Science",
     featured: false,
     github: "https://github.com/Swapnil-bo/Movie-Recommendation-System",
-    demo: null
+    demo: "https://cinematch-srhdqinjayyzzwhvayghmy.streamlit.app/"
   },
   {
     name: "House Price Predictor",
