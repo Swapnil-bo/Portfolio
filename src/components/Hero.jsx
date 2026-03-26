@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 import ParticleField from './ParticleField'
 import { playClickSound } from '../utils/hoverSound'
 
@@ -92,12 +92,18 @@ function MagneticButton({ children, className, style, ...props }) {
 function Hero() {
   const [displayedChars, setDisplayedChars] = useState(0)
   const [typingDone, setTypingDone] = useState(false)
-  const statsRef = useRef(null)
-  const statsInView = useInView(statsRef, { once: true, amount: 0.5 })
+  const [startCounters, setStartCounters] = useState(false)
 
-  const count0 = useCounter(stats[0].value, typingDone && statsInView)
-  const count1 = useCounter(stats[1].value, typingDone && statsInView)
-  const count2 = useCounter(stats[2].value, typingDone && statsInView)
+  // Start counters 500ms after typingDone (matches the stats bar stagger delay)
+  useEffect(() => {
+    if (!typingDone) return
+    const timer = setTimeout(() => setStartCounters(true), 500)
+    return () => clearTimeout(timer)
+  }, [typingDone])
+
+  const count0 = useCounter(stats[0].value, startCounters)
+  const count1 = useCounter(stats[1].value, startCounters)
+  const count2 = useCounter(stats[2].value, startCounters)
   const counts = [count0, count1, count2]
 
   // Typed effect — one character every ~50ms for ~1.5s total
@@ -179,7 +185,6 @@ function Hero() {
         {/* Stats bar — animated counters */}
         {typingDone && (
           <motion.div
-            ref={statsRef}
             className="flex flex-wrap items-center gap-4 md:gap-6 mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

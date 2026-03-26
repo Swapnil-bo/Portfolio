@@ -51,7 +51,9 @@
       "Bash(git commit -m \"fix: add MacBook Air M1 to bio\")",
       "Bash(git commit -m \"feat: add FossilAI project\")",
       "Bash(git commit -m \"feat: add FossilAI live demo link\")",
-      "Bash(git commit -m \"fix: reorder FossilAI tags\")"
+      "Bash(git commit -m \"fix: reorder FossilAI tags\")",
+      "Bash(git add src/App.jsx src/components/About.jsx src/components/Contact.jsx src/components/Hero.jsx src/components/ProjectCard.jsx src/components/Projects.jsx src/components/Timeline.jsx src/index.css src/components/CustomCursor.jsx src/components/EasterTerminal.jsx src/components/SectionDivider.jsx src/components/useTextScramble.js src/utils/hoverSound.js)",
+      "Bash(git commit:*)"
     ]
   }
 }
