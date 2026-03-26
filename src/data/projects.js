@@ -36,6 +36,15 @@ export const projects = [
     demo: "https://cut-ai-nbx8.vercel.app/"
   },
   {
+    name: "NETLIFE",
+    desc: "Turn your life into a Netflix Original Series using local AI — title, cast, episodes & trailer script. Built with React + Mistral 7B via Ollama. No API keys. No cloud. Runs 100% on your machine.",
+    tags: ["React", "Vite", "JavaScript", "Tailwind CSS", "Ollama", "Mistral 7B", "Local AI"],
+    category: "Local LLMs",
+    featured: false,
+    github: "https://github.com/Swapnil-bo/NETLIFE",
+    demo: null
+  },
+  {
     name: "LoreWeaver",
     desc: "Multiplayer tabletop RPG with a local Mistral 7B Dungeon Master, RAG/ChromaDB memory, React Flow world map, and real-time WebSocket multiplayer.",
     tags: ["FastAPI", "Mistral 7B", "ChromaDB", "React Flow", "WebSocket", "RAG"],
