@@ -45,6 +45,13 @@ body {
   overflow-x: hidden;
 }
 
+/* Custom cursor — hide default on non-touch devices */
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
 #root {
   min-height: 100vh;
 }

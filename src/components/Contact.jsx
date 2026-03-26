@@ -1,5 +1,6 @@
-import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { useState, useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { useTextScramble } from './useTextScramble'
 
 const socials = [
   {
@@ -58,6 +59,9 @@ const socials = [
 
 function Contact() {
   const [copied, setCopied] = useState(false)
+  const headerRef = useRef(null)
+  const headerInView = useInView(headerRef, { once: true, amount: 0.1 })
+  const scrambledTitle = useTextScramble("Let's Connect", headerInView)
 
   const handleCopy = () => {
     navigator.clipboard.writeText('swapnilhazra8@gmail.com')
@@ -70,6 +74,7 @@ function Contact() {
       <div className="max-w-[600px] mx-auto">
         {/* Section Header */}
         <motion.div
+          ref={headerRef}
           className="mb-10 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -80,7 +85,7 @@ function Contact() {
             // contact
           </p>
           <h2 className="font-syne font-bold text-3xl md:text-4xl mb-3" style={{ color: 'var(--text-primary)' }}>
-            Let's Connect<span className="typed-cursor" />
+            {scrambledTitle}<span className="typed-cursor" />
           </h2>
           <div
             className="w-[60px] h-[2px] glow-green mx-auto"

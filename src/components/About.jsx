@@ -1,4 +1,6 @@
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { useTextScramble } from './useTextScramble'
 
 const infoCards = [
   {
@@ -37,10 +39,15 @@ const skills = [
 ]
 
 function About() {
+  const headerRef = useRef(null)
+  const headerInView = useInView(headerRef, { once: true, amount: 0.1 })
+  const scrambledTitle = useTextScramble('Who I Am', headerInView)
+
   return (
     <section id="about" className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
       {/* Section Header */}
       <motion.div
+        ref={headerRef}
         className="mb-12"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -51,7 +58,7 @@ function About() {
           // about
         </p>
         <h2 className="font-syne font-bold text-3xl md:text-4xl mb-3" style={{ color: 'var(--text-primary)' }}>
-          Who I Am<span className="typed-cursor" />
+          {scrambledTitle}<span className="typed-cursor" />
         </h2>
         <div
           className="w-[60px] h-[2px] glow-green"
