@@ -45,6 +45,15 @@ export const projects = [
     demo: null
   },
   {
+    name: "The Multiverse Courier",
+    desc: "AI newspaper that generates today's headlines from alternate timelines using a local LLM. Feed it a date and get parallel-universe news articles, editorials, and breaking stories.",
+    tags: ["Python", "React", "Vite", "FastAPI", "Tailwind CSS", "Ollama", "Mistral 7B", "Local AI"],
+    category: "Local LLMs",
+    featured: false,
+    github: "https://github.com/Swapnil-bo/The-Multiverse-Courier",
+    demo: null
+  },
+  {
     name: "LoreWeaver",
     desc: "Multiplayer tabletop RPG with a local Mistral 7B Dungeon Master, RAG/ChromaDB memory, React Flow world map, and real-time WebSocket multiplayer.",
     tags: ["FastAPI", "Mistral 7B", "ChromaDB", "React Flow", "WebSocket", "RAG"],
