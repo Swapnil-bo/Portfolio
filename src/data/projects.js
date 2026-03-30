@@ -54,6 +54,15 @@ export const projects = [
     demo: null
   },
   {
+    name: "Anime-ify Me",
+    desc: "Describe yourself and get your anime character profile, backstory & special power. Built with React, FastAPI & Mistral 7B running fully locally via Ollama — no API keys, no cloud, just on-device AI.",
+    tags: ["Python", "React", "Vite", "FastAPI", "JavaScript", "Tailwind CSS", "Framer Motion", "Ollama", "Mistral 7B", "Local AI"],
+    category: "Local LLMs",
+    featured: false,
+    github: "https://github.com/Swapnil-bo/Anime-ify-Me",
+    demo: null
+  },
+  {
     name: "LoreWeaver",
     desc: "Multiplayer tabletop RPG with a local Mistral 7B Dungeon Master, RAG/ChromaDB memory, React Flow world map, and real-time WebSocket multiplayer.",
     tags: ["FastAPI", "Mistral 7B", "ChromaDB", "React Flow", "WebSocket", "RAG"],
