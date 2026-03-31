@@ -63,6 +63,15 @@ export const projects = [
     demo: null
   },
   {
+    name: "Roast My Resume",
+    desc: "Upload your resume, pick a role — get brutally roasted and rewritten by a local AI. Powered by Mistral 7B via Ollama. No cloud. No API keys. Just pain.",
+    tags: ["Python", "React", "Vite", "FastAPI", "JavaScript", "Framer Motion", "Ollama", "Mistral 7B", "Local AI"],
+    category: "Local LLMs",
+    featured: false,
+    github: "https://github.com/Swapnil-bo/Roast-My-Resume",
+    demo: null
+  },
+  {
     name: "LoreWeaver",
     desc: "Multiplayer tabletop RPG with a local Mistral 7B Dungeon Master, RAG/ChromaDB memory, React Flow world map, and real-time WebSocket multiplayer.",
     tags: ["FastAPI", "Mistral 7B", "ChromaDB", "React Flow", "WebSocket", "RAG"],
