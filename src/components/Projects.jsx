@@ -4,7 +4,7 @@ import { projects } from '../data/projects'
 import ProjectCard from './ProjectCard'
 import { useTextScramble } from './useTextScramble'
 
-const filters = ['All', 'Agentic AI', 'Local LLMs', 'ML & Data Science', 'Full-Stack']
+const filters = ['All', 'Featured', 'Agentic AI', 'Local LLMs', 'ML & Data Science', 'Full-Stack']
 
 function Projects() {
   const [activeFilter, setActiveFilter] = useState('All')
@@ -14,7 +14,9 @@ function Projects() {
 
   const filtered = activeFilter === 'All'
     ? projects
-    : projects.filter(p => p.category === activeFilter)
+    : activeFilter === 'Featured'
+      ? projects.filter(p => p.featured)
+      : projects.filter(p => p.category === activeFilter)
 
   return (
     <section id="projects" className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
@@ -54,9 +56,13 @@ function Projects() {
               onClick={() => setActiveFilter(filter)}
               className="font-jetbrains text-xs px-4 py-2.5 md:py-1.5 rounded border transition-all duration-150 cursor-pointer"
               style={{
-                background: activeFilter === filter ? 'var(--neon-green)' : 'var(--bg-surface)',
+                background: activeFilter === filter
+                  ? (filter === 'Featured' ? 'var(--neon-hot)' : 'var(--neon-green)')
+                  : 'var(--bg-surface)',
                 color: activeFilter === filter ? 'var(--bg-void)' : 'var(--text-secondary)',
-                borderColor: activeFilter === filter ? 'var(--neon-green)' : 'var(--border-dim)',
+                borderColor: activeFilter === filter
+                  ? (filter === 'Featured' ? 'var(--neon-hot)' : 'var(--neon-green)')
+                  : 'var(--border-dim)',
               }}
               onMouseEnter={(e) => {
                 if (activeFilter !== filter) e.currentTarget.style.borderColor = 'var(--border-glow)'
