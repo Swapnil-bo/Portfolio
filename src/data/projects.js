@@ -22,7 +22,7 @@ export const projects = [
     desc: "AI Code Archaeologist — upload any GitHub repo and FossilAI reverse-engineers its architecture. Interactive dependency graph, auto-generated ADRs, tech debt heatmap, and refactor simulations.",
     tags: ["Python", "React", "FastAPI", "Gemini", "Groq", "React Flow"],
     category: "Agentic AI",
-    featured: true,
+    featured: false,
     github: "https://github.com/Swapnil-bo/FossilAI",
     demo: "https://fossil-ai.vercel.app/"
   },
@@ -31,7 +31,7 @@ export const projects = [
     desc: "AI Film Director & Storyboard Engine — feed it a script, get shot-by-shot breakdowns, camera angles, mood arcs, and a drag-and-drop visual timeline.",
     tags: ["React", "FastAPI", "Groq", "Ollama", "React Flow", "Recharts", "Zustand"],
     category: "Local LLMs",
-    featured: true,
+    featured: false,
     github: "https://github.com/Swapnil-bo/CutAI",
     demo: "https://cut-ai-nbx8.vercel.app/"
   },
@@ -79,6 +79,15 @@ export const projects = [
     featured: false,
     github: "https://github.com/Swapnil-bo/LoreWeaver",
     demo: null
+  },
+  {
+    name: "AI Product Teardown",
+    desc: "AI-powered product analysis tool that deconstructs any SaaS/app into a full PM teardown — personas, pain points, revenue model, feature gaps, and growth opportunities.",
+    tags: ["Python", "React", "Vite", "FastAPI", "JavaScript", "Groq", "Generative AI"],
+    category: "Full-Stack",
+    featured: true,
+    github: "https://github.com/Swapnil-bo/Ai-Product-Teardown",
+    demo: "https://ai-product-teardown.vercel.app/"
   },
   {
     name: "EchoChamber",
