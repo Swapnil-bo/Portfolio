@@ -27,15 +27,6 @@ export const projects = [
     demo: "https://fossil-ai.vercel.app/"
   },
   {
-    name: "CutAI",
-    desc: "AI Film Director & Storyboard Engine — feed it a script, get shot-by-shot breakdowns, camera angles, mood arcs, and a drag-and-drop visual timeline.",
-    tags: ["React", "FastAPI", "Groq", "Ollama", "React Flow", "Recharts", "Zustand"],
-    category: "Local LLMs",
-    featured: false,
-    github: "https://github.com/Swapnil-bo/CutAI",
-    demo: "https://cut-ai-nbx8.vercel.app/"
-  },
-  {
     name: "NETLIFE",
     desc: "Turn your life into a Netflix Original Series using local AI — title, cast, episodes & trailer script. Built with React + Mistral 7B via Ollama. No API keys. No cloud. Runs 100% on your machine.",
     tags: ["React", "Vite", "JavaScript", "Tailwind CSS", "Ollama", "Mistral 7B", "Local AI"],
@@ -97,6 +88,15 @@ export const projects = [
     featured: true,
     github: "https://github.com/Swapnil-bo/Vibe-Check",
     demo: "https://vibe-check-api.vercel.app/"
+  },
+  {
+    name: "CutAI",
+    desc: "AI Film Director & Storyboard Engine — feed it a script, get shot-by-shot breakdowns, camera angles, mood arcs, and a drag-and-drop visual timeline.",
+    tags: ["React", "FastAPI", "Groq", "React Flow", "Recharts", "Zustand"],
+    category: "Full-Stack",
+    featured: false,
+    github: "https://github.com/Swapnil-bo/CutAI",
+    demo: "https://cut-ai-nbx8.vercel.app/"
   },
   {
     name: "EchoChamber",
