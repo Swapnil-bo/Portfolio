@@ -153,6 +153,15 @@ export const projects = [
     demo: "https://cinematch-srhdqinjayyzzwhvayghmy.streamlit.app/"
   },
   {
+    name: "AI-Language Translator",
+    desc: "Privacy-first offline translator — MarianMT running locally for 6+ language pairs. No API calls, no data ever leaves your machine.",
+    tags: ["Python", "HuggingFace", "MarianMT", "PyTorch", "Streamlit"],
+    category: "ML & Data Science",
+    featured: false,
+    github: "https://github.com/Swapnil-bo/AI-Language-Translator",
+    demo: "https://ai-language-translator-crd3s3hykkbdu6wec2o6qj.streamlit.app/"
+  },
+  {
     name: "House Price Predictor",
     desc: "End-to-end price prediction — advanced EDA, VIF multicollinearity handling, Scikit-Learn pipelines for robust regression modeling.",
     tags: ["Python", "Pandas", "Seaborn", "Scikit-Learn", "Streamlit"],
@@ -160,14 +169,5 @@ export const projects = [
     featured: false,
     github: "https://github.com/Swapnil-bo/House-Price-Predictor",
     demo: "https://house-price-predictor-h4xszy5zhgrt42wjtcwkhb.streamlit.app/"
-  },
-  {
-    name: "AI-Language Translator",
-    desc: "Privacy-first offline translator — MarianMT running locally for 6+ language pairs. No API calls, no data ever leaves your machine.",
-    tags: ["Python", "HuggingFace", "MarianMT", "PyTorch", "Streamlit"],
-    category: "Local LLMs",
-    featured: false,
-    github: "https://github.com/Swapnil-bo/AI-Language-Translator",
-    demo: "https://ai-language-translator-crd3s3hykkbdu6wec2o6qj.streamlit.app/"
   }
 ];
