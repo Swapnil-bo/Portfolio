@@ -1,5 +1,14 @@
 export const projects = [
   {
+    name: "SynthBoard",
+    desc: "Local fine-tuning pipeline + model arena for consumer GPUs. Upload datasets → auto-format → QLoRA fine-tune via unsloth → export to GGUF → compare against base models in a blind side-by-side arena with Elo ratings. Built for RTX 3050 6GB.",
+    tags: ["Python", "FastAPI", "React", "Vite", "Tailwind CSS", "Ollama", "QLoRA", "Unsloth", "LoRA", "Transformers", "BitsAndBytes", "GGUF", "Llama.cpp", "SQLite", "SSE", "Local-LLM", "Elo Rating"],
+    category: "Local LLMs",
+    featured: true,
+    github: "https://github.com/Swapnil-bo/SynthBoard",
+    demo: null
+  },
+  {
     name: "J.A.R.V.I.S.",
     desc: "100% local AI assistant with voice, vision, memory & code execution — running on 8GB RAM. No cloud. No API keys. No excuses.",
     tags: ["Python", "Ollama", "Whisper", "Voice AI", "Local-LLM", "Phi-3"],
