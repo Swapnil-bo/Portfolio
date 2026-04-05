@@ -90,6 +90,15 @@ export const projects = [
     demo: "https://ai-product-teardown.vercel.app/"
   },
   {
+    name: "VibeCheck",
+    desc: "Paste any text — tweet, email, or message — and get a detailed emotional breakdown with tone tags, intent analysis, red flags, and a Vibe Score.",
+    tags: ["FastAPI", "React", "Vite", "Groq", "Python", "Tailwind", "Framer Motion", "Pydantic", "Generative AI"],
+    category: "Full-Stack",
+    featured: true,
+    github: "https://github.com/Swapnil-bo/Vibe-Check",
+    demo: "https://vibe-check-api.vercel.app/"
+  },
+  {
     name: "EchoChamber",
     desc: "Drop a URL, PDF, or Wikipedia page — get a 5-minute two-host AI debate podcast. Full pipeline from scraping to text-to-speech.",
     tags: ["FastAPI", "React", "Gemini", "Edge-TTS", "PyDub", "LangChain"],
