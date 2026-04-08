@@ -90,6 +90,15 @@ export const projects = [
     demo: "https://ai-product-teardown.vercel.app/"
   },
   {
+    name: "AI Roast My Code",
+    desc: "An AI-powered code roaster — paste any public GitHub repo and get destroyed. Built with FastAPI + Groq + React.",
+    tags: ["FastAPI", "React", "Vite", "Groq", "Python", "Pillow", "Pydantic", "Uvicorn", "JavaScript", "REST API", "GitHub API", "Generative AI"],
+    category: "Full-Stack",
+    featured: true,
+    github: "https://github.com/Swapnil-bo/AI-Roast-My-Code",
+    demo: "https://ai-roast-my-code.vercel.app/"
+  },
+  {
     name: "VibeCheck",
     desc: "Paste any text — tweet, email, or message — and get a detailed emotional breakdown with tone tags, intent analysis, red flags, and a Vibe Score.",
     tags: ["FastAPI", "React", "Vite", "Groq", "Python", "Tailwind", "Framer Motion", "Pydantic", "Generative AI"],
