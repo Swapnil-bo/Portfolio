@@ -144,15 +144,6 @@ export const projects = [
     demo: "https://chat-vibe-psi.vercel.app/"
   },
   {
-    name: "ResumeRank-AI",
-    desc: "Automated resume screening agent — ranks candidates via LLM-based gap analysis using Gemini 2.5 Flash. Built for hiring workflows.",
-    tags: ["Python", "Gemini", "Pandas", "PyPDF", "Streamlit"],
-    category: "Agentic AI",
-    featured: false,
-    github: "https://github.com/Swapnil-bo/ResumeRank-AI",
-    demo: null
-  },
-  {
     name: "TruthLens",
     desc: "Fake news detector with 5-signal credibility scoring and LIME phrase-level explainability. XGBoost + spaCy pipeline with visual breakdown.",
     tags: ["Python", "XGBoost", "spaCy", "LIME", "Plotly", "Streamlit"],
@@ -187,5 +178,14 @@ export const projects = [
     featured: false,
     github: "https://github.com/Swapnil-bo/House-Price-Predictor",
     demo: "https://house-price-predictor-h4xszy5zhgrt42wjtcwkhb.streamlit.app/"
+  },
+  {
+    name: "ResumeRank-AI",
+    desc: "Automated resume screening agent — ranks candidates via LLM-based gap analysis using Gemini 2.5 Flash. Built for hiring workflows.",
+    tags: ["Python", "Gemini", "Pandas", "PyPDF", "Streamlit"],
+    category: "ML & Data Science",
+    featured: false,
+    github: "https://github.com/Swapnil-bo/ResumeRank-AI",
+    demo: null
   }
 ];
