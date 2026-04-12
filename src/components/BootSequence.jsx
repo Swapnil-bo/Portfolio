@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 const bootLines = [
   '[BOOT] Neural Terminal v2.0.26',
   '[INIT] Loading identity matrix... OK',
-  '[SCAN] 21 projects indexed',
+  '[SCAN] 22 projects indexed',
   '[LINK] GitHub connection established',
   '[SYS]  All modules operational',
   '> Welcome. Initializing interface...',

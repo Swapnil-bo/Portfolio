@@ -54,6 +54,15 @@ export const projects = [
     demo: null
   },
   {
+    name: "Vibe Check Dashboard",
+    desc: "Scrapes your GitHub commits for the last 30 days and uses local AI (qwen2.5:7b via Ollama) to analyze your builder energy — mood trends, productivity spikes, and burnout signals.",
+    tags: ["Python", "React", "Vite", "FastAPI", "JavaScript", "Tailwind CSS", "Framer Motion", "Recharts", "Ollama", "qwen2.5:7b", "Local AI"],
+    category: "Local LLMs",
+    featured: false,
+    github: "https://github.com/Swapnil-bo/Vibe-Check-Dashboard",
+    demo: null
+  },
+  {
     name: "Anime-ify Me",
     desc: "Describe yourself and get your anime character profile, backstory & special power. Built with React, FastAPI & Mistral 7B running fully locally via Ollama — no API keys, no cloud, just on-device AI.",
     tags: ["Python", "React", "Vite", "FastAPI", "JavaScript", "Tailwind CSS", "Framer Motion", "Ollama", "Mistral 7B", "Local AI"],
