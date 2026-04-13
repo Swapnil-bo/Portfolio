@@ -27,6 +27,15 @@ export const projects = [
     demo: null
   },
   {
+    name: "Startup Idea Roulette",
+    desc: "Spin three slot wheels, get a random audience + problem + tech, watch a local LLM roast your doomed startup idea in real time. Built with FastAPI, Ollama (Mistral 7B), React + Vite, and a dangerously good prompt.",
+    tags: ["Python", "React", "Vite", "FastAPI", "JavaScript", "Tailwind CSS", "Framer Motion", "Ollama", "Mistral 7B", "Local AI", "Streaming", "Local LLM"],
+    category: "Local LLMs",
+    featured: false,
+    github: "https://github.com/Swapnil-bo/Startup-Idea-Roulette",
+    demo: null
+  },
+  {
     name: "FossilAI",
     desc: "AI Code Archaeologist — upload any GitHub repo and FossilAI reverse-engineers its architecture. Interactive dependency graph, auto-generated ADRs, tech debt heatmap, and refactor simulations.",
     tags: ["Python", "React", "FastAPI", "Gemini", "Groq", "React Flow"],
