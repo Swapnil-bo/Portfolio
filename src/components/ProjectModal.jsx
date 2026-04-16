@@ -352,6 +352,29 @@ function ProjectModal({ project, onClose }) {
                   [ Live Demo → ]
                 </a>
               )}
+              {details.extraLinks?.map((link) => (
+                <a
+                  key={link.url}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-jetbrains text-sm px-4 py-2 border rounded transition-all duration-150"
+                  style={{
+                    color: 'var(--neon-purple)',
+                    borderColor: 'var(--neon-purple)',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(168, 85, 247, 0.08)'
+                    e.currentTarget.style.boxShadow = '0 0 20px rgba(168, 85, 247, 0.2)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'transparent'
+                    e.currentTarget.style.boxShadow = 'none'
+                  }}
+                >
+                  [ {link.label} ↗ ]
+                </a>
+              ))}
             </div>
           </motion.div>
         </motion.div>

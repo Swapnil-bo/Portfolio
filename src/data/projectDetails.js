@@ -131,5 +131,49 @@ export const projectDetails = {
       { value: "16/16", label: "E2E tests passing" }
     ],
     status: "Shipped"
+  },
+  "AI Product Teardown": {
+    fullName: "AI Product Teardown",
+    tagline: "Drop any product URL or description — get a brutal, board-room-grade PM teardown in 15 seconds, powered by LLaMA 3.3 70B on Groq.",
+    problem: "Every PM teardown tool I found either summarized the product back at you or hid behind a paywall. I wanted something that actually diagnosed — personas, moat, monetization gaps, red flags, and a kill-or-scale verdict — the way a Series B investor would read it. Nothing free did that. So I built the prompt, then built everything around it.",
+    approach: [
+      "Jina Reader scrapes any product URL to clean markdown — no API key, no Playwright, no headless browser overhead",
+      "Falls back to direct HTTP fetch + HTML stripping if Jina returns thin content",
+      "A 200-line system prompt primes LLaMA 3.3 70B to think in PM frameworks (JTBD, Blue Ocean, Outcome-driven Innovation) and return a strict JSON schema",
+      "FastAPI analyzer validates, sanitizes, and clamps every enum field before it touches the frontend — malformed LLM output never reaches the UI",
+      "React renders 9 collapsible sections with staggered animations, an animated SVG score ring, and a kill/pivot/hold/scale verdict chip"
+    ],
+    stack: {
+      AI: ["Groq API", "LLaMA 3.3 70B", "Jina Reader (r.jina.ai)"],
+      Backend: ["FastAPI", "Python", "httpx", "Pydantic v2", "python-dotenv"],
+      Frontend: ["React 18", "Vite", "Lucide React", "Pure CSS design system"],
+      Infra: ["Render (backend)", "Vercel (frontend)"]
+    },
+    challenges: [
+      {
+        title: "Inconsistent LLM array lengths",
+        body: "LLMs return inconsistent array lengths — pain_points_solved would sometimes have 2 items, sometimes 9, breaking the frontend layout. Fixed by adding explicit \"return exactly N items\" constraints inside the JSON schema comment blocks in the system prompt. Output is now deterministic in length."
+      },
+      {
+        title: "Malformed JSON from Groq",
+        body: "Groq occasionally returns trailing commas and JS-style // comments in JSON, which json.loads() hard-crashes on. Built a multi-pass extract_json() that strips markdown fences, finds outermost braces, removes comments, strips trailing commas, then falls back to single-quote replacement before giving up. Zero JSON crashes in production."
+      },
+      {
+        title: "Duplicate style injection on re-render",
+        body: "React re-renders Section.jsx 9 times per teardown — injecting a <style> block on every render meant 9 duplicate rule sets in the DOM. Solved with a module-level stylesInjected boolean and a useInjectStyles() hook that writes the stylesheet exactly once per app lifetime regardless of render count."
+      }
+    ],
+    metrics: [
+      { value: "12–18s", label: "Avg teardown time" },
+      { value: "~98%", label: "JSON parse success" },
+      { value: "0", label: "VRAM (cloud inference)" },
+      { value: "312", label: "Prompt lines" },
+      { value: "12", label: "Schema sections" },
+      { value: "5", label: "Enum-validated fields" }
+    ],
+    extraLinks: [
+      { label: "LinkedIn Post", url: "https://www.linkedin.com/feed/update/urn:li:activity:7446196107120087041/" }
+    ],
+    status: "Shipped"
   }
 }
