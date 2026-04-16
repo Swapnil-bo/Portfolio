@@ -2,12 +2,14 @@ import { useState, useRef } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { projects } from '../data/projects'
 import ProjectCard from './ProjectCard'
+import ProjectModal from './ProjectModal'
 import { useTextScramble } from './useTextScramble'
 
 const filters = ['All', 'Featured', 'Agentic AI', 'Local LLMs', 'ML & Data Science', 'Full-Stack']
 
 function Projects() {
   const [activeFilter, setActiveFilter] = useState('All')
+  const [selectedProject, setSelectedProject] = useState(null)
   const headerRef = useRef(null)
   const headerInView = useInView(headerRef, { once: true, amount: 0.1 })
   const scrambledTitle = useTextScramble("What I've Built", headerInView)
@@ -85,10 +87,17 @@ function Projects() {
       <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         <AnimatePresence mode="popLayout">
           {filtered.map((project, i) => (
-            <ProjectCard key={project.name} project={project} index={i} />
+            <ProjectCard
+              key={project.name}
+              project={project}
+              index={i}
+              onOpenDetail={setSelectedProject}
+            />
           ))}
         </AnimatePresence>
       </motion.div>
+
+      <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
     </section>
   )
 }

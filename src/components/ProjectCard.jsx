@@ -1,5 +1,6 @@
 import { useRef, useCallback, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import { projectDetails } from '../data/projectDetails'
 
 const categoryConfig = {
   'Agentic AI': { color: 'var(--neon-green)', rgb: '0, 255, 136' },
@@ -8,7 +9,8 @@ const categoryConfig = {
   'Local LLMs': { color: 'var(--neon-hot)', rgb: '255, 51, 102' },
 }
 
-function ProjectCard({ project, index }) {
+function ProjectCard({ project, index, onOpenDetail }) {
+  const hasDetails = Boolean(projectDetails[project.name])
   const cat = categoryConfig[project.category] || categoryConfig['Agentic AI']
   const cardRef = useRef(null)
   const [isMobile, setIsMobile] = useState(false)
@@ -54,7 +56,7 @@ function ProjectCard({ project, index }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.3, delay: index * 0.05 }}
-      className={`card-hover-scan project-card p-5 border rounded cursor-default relative overflow-hidden ${project.featured ? 'featured-card' : ''}`}
+      className={`card-hover-scan project-card p-5 border rounded relative overflow-hidden ${hasDetails ? 'cursor-pointer' : 'cursor-default'} ${project.featured ? 'featured-card' : ''}`}
       style={{
         background: 'var(--bg-surface)',
         borderColor: 'var(--border-dim)',
@@ -64,6 +66,16 @@ function ProjectCard({ project, index }) {
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onClick={hasDetails ? () => onOpenDetail?.(project) : undefined}
+      onKeyDown={hasDetails ? (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          onOpenDetail?.(project)
+        }
+      } : undefined}
+      role={hasDetails ? 'button' : undefined}
+      tabIndex={hasDetails ? 0 : undefined}
+      aria-label={hasDetails ? `View case study for ${project.name}` : undefined}
     >
       {/* Corner brackets */}
       <span className="corner-bracket corner-tl" />
@@ -96,15 +108,29 @@ function ProjectCard({ project, index }) {
           <span className="category-dot" style={{ background: cat.color, boxShadow: `0 0 6px ${cat.color}` }} />
           {project.category}
         </span>
-        {project.featured && (
-          <span
-            className="font-jetbrains text-[11px] flex items-center gap-1.5"
-            style={{ color: 'var(--neon-hot)' }}
-          >
-            <span className="pulse-dot-hot" />
-            ★ FEATURED
-          </span>
-        )}
+        <div className="flex items-center gap-3">
+          {project.featured && (
+            <span
+              className="font-jetbrains text-[11px] flex items-center gap-1.5"
+              style={{ color: 'var(--neon-hot)' }}
+            >
+              <span className="pulse-dot-hot" />
+              ★ FEATURED
+            </span>
+          )}
+          {hasDetails && (
+            <span
+              className="font-jetbrains text-[10px] uppercase tracking-wider px-1.5 py-0.5 border rounded-[3px]"
+              style={{
+                color: 'var(--neon-cyan)',
+                borderColor: 'rgba(0, 212, 255, 0.3)',
+                background: 'rgba(0, 212, 255, 0.05)',
+              }}
+            >
+              + CASE STUDY
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Project name */}
@@ -154,6 +180,7 @@ function ProjectCard({ project, index }) {
           href={project.github}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
           className="font-jetbrains text-xs transition-colors duration-150"
           style={{ color: 'var(--neon-green)' }}
           onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--text-primary)' }}
@@ -166,6 +193,7 @@ function ProjectCard({ project, index }) {
             href={project.demo}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
             className="font-jetbrains text-xs transition-colors duration-150"
             style={{ color: 'var(--neon-cyan)' }}
             onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--text-primary)' }}
