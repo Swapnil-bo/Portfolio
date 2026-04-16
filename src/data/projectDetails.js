@@ -86,5 +86,50 @@ export const projectDetails = {
       { value: "$0", label: "API cost" }
     ],
     status: "Shipped"
+  },
+  "SynthBoard": {
+    fullName: "SynthBoard",
+    tagline: "A local-first platform that fine-tunes language models with QLoRA and pits them against base models in a blind Elo arena — all on a 6GB RTX 3050.",
+    problem: "Most fine-tuning pipelines assume a beefy A100 and a clean dataset. And once you've trained a model, you have no way to actually tell if it got better — you just squint at the loss curve and hope. I wanted the full MLOps lifecycle (upload → format → train → export → evaluate) running locally on consumer hardware, with a real evaluation mechanism that feels like Chatbot Arena.",
+    approach: [
+      "Upload any dataset (CSV/JSONL/JSON/Parquet) — auto-detects Alpaca / ShareGPT / QA / raw and converts to a standardized format via streaming parsers (never loads full file into RAM)",
+      "QLoRA fine-tune via unsloth (4-bit, gradient checkpointing, 8-bit optimizer) — full VRAM guard + global training lock prevents OOM on 6GB",
+      "SFTTrainer runs in a ThreadPoolExecutor; a broadcast SSE callback streams loss/VRAM/ETA to the React dashboard in real time",
+      "Export via save_pretrained_merged → llama-quantize.exe → Q4_K_M GGUF → auto-register in Ollama with model-family-aware chat templates (Qwen, Llama, SmolLM, Phi)",
+      "Blind arena runs sequential inference (Model A loads → generates → unloads → Model B) with 120s timeout; user votes A/Tie/B/Skip and Elo updates (K=32)"
+    ],
+    stack: {
+      "AI / ML": ["unsloth", "PyTorch", "trl (SFTTrainer)", "bitsandbytes", "peft", "Ollama", "llama.cpp"],
+      Backend: ["FastAPI", "httpx", "SSE", "ThreadPoolExecutor", "aiosqlite", "pynvml"],
+      Frontend: ["React", "Vite", "Tailwind", "Recharts", "react-dropzone", "react-router-dom"],
+      Infra: ["SQLite (indexed battle tables)", "Ollama local server", "RTX 3050 6GB", "Windows 11 native"]
+    },
+    challenges: [
+      {
+        title: "unsloth save_to_gguf hung forever",
+        body: "unsloth's save_to_gguf hung indefinitely on native Windows because it silently tries to build llama.cpp from source via CMake. Fix: rewrote the exporter to use save_pretrained_merged → convert_hf_to_gguf.py → pre-built llama-quantize.exe. Zero compilation, works every time."
+      },
+      {
+        title: "Training blocked the whole server",
+        body: "SFTTrainer.train() is synchronous and blocking. Calling it directly in a FastAPI route froze the entire server and broke SSE. Fix: ThreadPoolExecutor(max_workers=1) + a bounded broadcast queue pattern so multiple browser tabs can watch the same run without consume-once semantics."
+      },
+      {
+        title: "Arena sequentiality vs live UX",
+        body: "Arena inference is fundamentally sequential on 6GB (can't load two 7B models simultaneously), which conflicted with a \"both panels stream live\" UX. Fix: built an explicit state machine — Panel A streams while Panel B shows \"Waiting…\" — which turned the constraint into a reveal mechanic that's actually more engaging than parallel output."
+      },
+      {
+        title: "Chat templates aren't portable",
+        body: "A hardcoded ChatML template would silently break every non-Qwen model in the arena. Fix: OLLAMA_TEMPLATES dict keyed on model family, generates the correct Modelfile per export (Qwen, Llama, SmolLM, Phi)."
+      }
+    ],
+    metrics: [
+      { value: "~91s", label: "Qwen2.5-1.5B / 100 samples" },
+      { value: "3.2GB", label: "Peak VRAM (QLoRA)" },
+      { value: "1.66 → 0.77", label: "Loss in 5 steps" },
+      { value: "940MB", label: "GGUF export (Q4_K_M)" },
+      { value: "<10min", label: "Full E2E cycle" },
+      { value: "16/16", label: "E2E tests passing" }
+    ],
+    status: "Shipped"
   }
 }
