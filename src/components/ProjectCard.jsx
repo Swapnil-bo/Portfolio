@@ -1,15 +1,15 @@
 import { useRef, useCallback, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
-const categoryColors = {
-  'Agentic AI': 'var(--neon-green)',
-  'Full-Stack': 'var(--neon-cyan)',
-  'ML & Data Science': 'var(--neon-purple)',
-  'Local LLMs': 'var(--neon-hot)',
+const categoryConfig = {
+  'Agentic AI': { color: 'var(--neon-green)', rgb: '0, 255, 136' },
+  'Full-Stack': { color: 'var(--neon-cyan)', rgb: '0, 212, 255' },
+  'ML & Data Science': { color: 'var(--neon-purple)', rgb: '168, 85, 247' },
+  'Local LLMs': { color: 'var(--neon-hot)', rgb: '255, 51, 102' },
 }
 
 function ProjectCard({ project, index }) {
-  const catColor = categoryColors[project.category] || 'var(--neon-green)'
+  const cat = categoryConfig[project.category] || categoryConfig['Agentic AI']
   const cardRef = useRef(null)
   const [isMobile, setIsMobile] = useState(false)
   const [tiltStyle, setTiltStyle] = useState({})
@@ -54,16 +54,23 @@ function ProjectCard({ project, index }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.3, delay: index * 0.05 }}
-      className="card-hover-scan project-card p-5 border rounded cursor-default relative overflow-hidden"
+      className={`card-hover-scan project-card p-5 border rounded cursor-default relative overflow-hidden ${project.featured ? 'featured-card' : ''}`}
       style={{
         background: 'var(--bg-surface)',
         borderColor: 'var(--border-dim)',
         transition: 'transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease',
+        '--card-glow-rgb': cat.rgb,
         ...tiltStyle,
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
+      {/* Corner brackets */}
+      <span className="corner-bracket corner-tl" />
+      <span className="corner-bracket corner-tr" />
+      <span className="corner-bracket corner-bl" />
+      <span className="corner-bracket corner-br" />
+
       {/* Moving radial gradient highlight */}
       {!isMobile && (
         <div
@@ -73,7 +80,7 @@ function ProjectCard({ project, index }) {
             left: 0,
             right: 0,
             bottom: 0,
-            background: `radial-gradient(circle at ${glowPos.x}% ${glowPos.y}%, rgba(255,255,255,0.05) 0%, transparent 60%)`,
+            background: `radial-gradient(circle at ${glowPos.x}% ${glowPos.y}%, rgba(var(--card-glow-rgb), 0.08) 0%, transparent 60%)`,
             pointerEvents: 'none',
             zIndex: 1,
           }}
@@ -83,16 +90,18 @@ function ProjectCard({ project, index }) {
       {/* Top row: category + featured badge */}
       <div className="flex items-center justify-between mb-3 relative z-2">
         <span
-          className="font-jetbrains text-[11px] uppercase tracking-wider"
-          style={{ color: catColor }}
+          className="font-jetbrains text-[11px] uppercase tracking-wider flex items-center gap-1.5"
+          style={{ color: cat.color }}
         >
-          ⟩ {project.category}
+          <span className="category-dot" style={{ background: cat.color, boxShadow: `0 0 6px ${cat.color}` }} />
+          {project.category}
         </span>
         {project.featured && (
           <span
-            className="font-jetbrains text-[11px]"
+            className="font-jetbrains text-[11px] flex items-center gap-1.5"
             style={{ color: 'var(--neon-hot)' }}
           >
+            <span className="pulse-dot-hot" />
             ★ FEATURED
           </span>
         )}
@@ -119,7 +128,7 @@ function ProjectCard({ project, index }) {
         {project.tags.map(tag => (
           <span
             key={tag}
-            className="font-jetbrains text-[11px] px-2 py-0.5 border rounded-[3px]"
+            className="tag-chip font-jetbrains text-[11px] px-2 py-0.5 border rounded-[3px]"
             style={{
               background: 'var(--bg-void)',
               borderColor: 'var(--border-dim)',

@@ -258,16 +258,18 @@ function Hero() {
         )}
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator — cascading chevrons */}
       {typingDone && (
         <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center -space-y-3"
           style={{ color: 'var(--text-ghost)' }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.6 }}
         >
-          <span className="text-2xl">∨</span>
+          <span className="chevron-cascade chevron-1 text-xl leading-none">∨</span>
+          <span className="chevron-cascade chevron-2 text-xl leading-none">∨</span>
+          <span className="chevron-cascade chevron-3 text-xl leading-none">∨</span>
         </motion.div>
       )}
     </section>

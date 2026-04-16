@@ -280,8 +280,23 @@ body::before {
   animation: bounce-down 2s ease-in-out infinite;
 }
 
+/* Cascading chevron scroll indicator */
+.chevron-cascade {
+  opacity: 0;
+  animation: chevron-fade 2s ease-in-out infinite;
+}
+.chevron-cascade.chevron-1 { animation-delay: 0s; }
+.chevron-cascade.chevron-2 { animation-delay: 0.25s; }
+.chevron-cascade.chevron-3 { animation-delay: 0.5s; }
+
+@keyframes chevron-fade {
+  0%, 100% { opacity: 0; transform: translateY(-4px); }
+  50% { opacity: 0.9; transform: translateY(0); color: var(--neon-green); }
+  75% { opacity: 0.4; }
+}
+
 /* ========================================
-   PROJECT CARD HOVER
+   PROJECT CARD HOVER (category-aware)
    ======================================== */
 
 .project-card {
@@ -290,8 +305,106 @@ body::before {
 
 .project-card:hover {
   transform: translateY(-4px);
-  border-color: var(--border-glow);
-  box-shadow: 0 0 20px rgba(0, 255, 136, 0.15), 0 0 60px rgba(0, 255, 136, 0.05);
+  border-color: rgba(var(--card-glow-rgb, 0, 255, 136), 0.4);
+  box-shadow: 0 0 20px rgba(var(--card-glow-rgb, 0, 255, 136), 0.2),
+              0 0 60px rgba(var(--card-glow-rgb, 0, 255, 136), 0.08);
+}
+
+/* Corner brackets (terminal UI) */
+.corner-bracket {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: rgba(var(--card-glow-rgb, 0, 255, 136), 0);
+  border-style: solid;
+  pointer-events: none;
+  z-index: 3;
+  transition: border-color 350ms ease, width 350ms ease, height 350ms ease;
+}
+
+.corner-bracket.corner-tl { top: 6px; left: 6px; border-width: 1px 0 0 1px; }
+.corner-bracket.corner-tr { top: 6px; right: 6px; border-width: 1px 1px 0 0; }
+.corner-bracket.corner-bl { bottom: 6px; left: 6px; border-width: 0 0 1px 1px; }
+.corner-bracket.corner-br { bottom: 6px; right: 6px; border-width: 0 1px 1px 0; }
+
+.project-card:hover .corner-bracket {
+  border-color: rgba(var(--card-glow-rgb, 0, 255, 136), 0.7);
+  width: 16px;
+  height: 16px;
+}
+
+/* Category dot */
+.category-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+/* Pulse dot for FEATURED badge */
+.pulse-dot-hot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--neon-hot);
+  box-shadow: 0 0 8px var(--neon-hot);
+  animation: pulse-hot 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-hot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.3); }
+}
+
+/* Tag chip — category-tinted on hover */
+.tag-chip {
+  transition: border-color 200ms ease, color 200ms ease, background 200ms ease;
+}
+
+.project-card:hover .tag-chip {
+  border-color: rgba(var(--card-glow-rgb, 0, 255, 136), 0.18);
+}
+
+.tag-chip:hover {
+  border-color: rgba(var(--card-glow-rgb, 0, 255, 136), 0.6) !important;
+  color: rgba(var(--card-glow-rgb, 0, 255, 136), 1) !important;
+  background: rgba(var(--card-glow-rgb, 0, 255, 136), 0.05) !important;
+}
+
+/* Featured card — animated gradient border */
+.featured-card::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 51, 102, 0.6) 0%,
+    rgba(0, 255, 136, 0.4) 30%,
+    rgba(0, 212, 255, 0.5) 60%,
+    rgba(168, 85, 247, 0.4) 85%,
+    rgba(255, 51, 102, 0.6) 100%
+  );
+  background-size: 300% 300%;
+  animation: border-flow 8s ease infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.35;
+  transition: opacity 300ms ease;
+}
+
+.featured-card:hover::after {
+  opacity: 0.8;
+}
+
+@keyframes border-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 /* ========================================
