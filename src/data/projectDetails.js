@@ -41,5 +41,50 @@ export const projectDetails = {
       { value: "0", label: "Cloud deps" }
     ],
     status: "Shipped"
+  },
+  "NEXUS": {
+    fullName: "NEXUS — Neural EXecution & Understanding System",
+    tagline: "A 4-agent Python code generator that plans, writes, runs, and fixes its own bugs — 100% local on a 6GB GPU.",
+    problem: "ChatGPT and Copilot can write code but can't verify it works, and they send your prompts to the cloud. Small local models (3B–7B) are fast but unreliable — they hallucinate syntax, produce malformed JSON, and can't catch their own mistakes. I wanted a self-correcting pipeline that runs entirely on consumer hardware with zero API costs and full data privacy, while still being robust enough to trust.",
+    approach: [
+      "Planner agent decomposes natural language tasks into 2–10 structured steps",
+      "Developer writes a complete Python script from the plan",
+      "Code Runner executes it in a sandboxed subprocess (10s timeout, stdout/stderr captured)",
+      "Reviewer validates output against task, classifies errors, and feeds specific fix instructions back to the Developer",
+      "LangGraph state machine retries up to 3 times before failing gracefully"
+    ],
+    stack: {
+      AI: ["Ollama", "qwen2.5-coder:7b", "LangGraph", "LangChain"],
+      Backend: ["Python 3.10+", "Pydantic v2", "Subprocess sandbox"],
+      Frontend: ["Rich (terminal UI)", "Syntax highlighting", "Spinners & panels"],
+      Infra: ["Fully local", "RTX 3050 6GB", "No API keys"]
+    },
+    challenges: [
+      {
+        title: "Small-model JSON chaos",
+        body: "Small models produce broken JSON constantly — empty fields, invented error types, markdown wrappers. Solved with a 4-layer defense: forced JSON mode, response cleaning, Pydantic schemas, and a @model_validator that auto-coerces model quirks (e.g., \"FileNotFoundError\" → \"logic_error\", empty error_type + is_valid:true → \"pass\")."
+      },
+      {
+        title: "Windows subprocess file-locking",
+        body: "Windows subprocess execution broke NamedTemporaryFile due to file-locking issues. Rewrote with a manual create/write/close/execute/delete cycle and sys.executable (not 'python') to respect venv activation."
+      },
+      {
+        title: "Context bloat on retries",
+        body: "Context window bloat across retries caused agents to drift. Solved with context pruning — the Developer sees only the latest code + latest feedback, never the full error log."
+      },
+      {
+        title: "Interactive input() hangs",
+        body: "Discovered during stress testing that interactive prompts (input()) hang the sandbox. Fixed by adding sandbox-awareness rules to both Developer and Reviewer prompts so they cooperate on hardcoding values."
+      }
+    ],
+    metrics: [
+      { value: "9/13", label: "Pass rate (69%)" },
+      { value: "30–60s", label: "End-to-end / task" },
+      { value: "~4.5GB", label: "VRAM (fits on GPU)" },
+      { value: "3", label: "Max retries" },
+      { value: "4", label: "Agents" },
+      { value: "$0", label: "API cost" }
+    ],
+    status: "Shipped"
   }
 }
