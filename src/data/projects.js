@@ -36,6 +36,15 @@ export const projects = [
     demo: null
   },
   {
+    name: "AutoResearcher",
+    desc: "Local-first multi-agent research system. Ask a question, get a cited research report. LangGraph orchestrates three specialized AI agents (Search → Extract → Synthesize) running entirely on Ollama. Open-source Perplexity, on your machine.",
+    tags: ["Python", "LangGraph", "FastAPI", "ChromaDB", "Ollama", "Multi-Agent", "RAG", "React", "Local-LLM", "LangChain"],
+    category: "Agentic AI",
+    featured: true,
+    github: "https://github.com/Swapnil-bo/AutoResearcher",
+    demo: null
+  },
+  {
     name: "FossilAI",
     desc: "AI Code Archaeologist — upload any GitHub repo and FossilAI reverse-engineers its architecture. Interactive dependency graph, auto-generated ADRs, tech debt heatmap, and refactor simulations.",
     tags: ["Python", "React", "FastAPI", "Gemini", "Groq", "React Flow"],
