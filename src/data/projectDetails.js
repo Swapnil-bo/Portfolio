@@ -175,5 +175,50 @@ export const projectDetails = {
       { label: "LinkedIn Post", url: "https://www.linkedin.com/feed/update/urn:li:activity:7446196107120087041/" }
     ],
     status: "Shipped"
+  },
+  "AutoResearcher": {
+    fullName: "AutoResearcher",
+    tagline: "A 3-agent deep research system that reads the web, cites every claim, and runs entirely on a 6GB laptop GPU — open-source Perplexity Pro with the curtain pulled back.",
+    problem: "Perplexity is closed, hosted, and logs every query. Local LLMs hallucinate, and their RAG stacks are usually glued together with cloud APIs that defeat the point. I wanted a fully-local research pipeline where three specialized agents collaborate on a single question, every source is traceable, and nothing leaves the machine — fitting inside the VRAM I actually have.",
+    approach: [
+      "Search Agent (Mistral 7B) decomposes the question into 3–5 angled queries, runs DuckDuckGo/Tavily, LLM-ranks the top 10 URLs",
+      "Extraction Agent (Qwen 2.5 7B) scrapes the top 8, strips boilerplate, chunks + embeds into a session-scoped ChromaDB collection, writes per-source summaries",
+      "Synthesis Agent (Qwen 2.5 7B) does multi-query RAG retrieval over those chunks and streams a cited, structured markdown report token-by-token over SSE",
+      "Format node (non-LLM) repairs hallucinated [Source N] markers, rebuilds the References section programmatically from the citation map, cleans up, deletes the ChromaDB collection",
+      "Entire pipeline orchestrated as a LangGraph StateGraph with conditional error/cancel edges at every node boundary"
+    ],
+    stack: {
+      AI: ["Ollama", "Mistral 7B-Instruct", "Qwen 2.5 7B", "sentence-transformers (MiniLM-L6-v2)", "LangGraph", "LangChain", "ChromaDB"],
+      Backend: ["Python 3.11", "FastAPI", "uvicorn", "sse-starlette", "httpx", "BeautifulSoup4", "ddgs", "Tavily"],
+      Frontend: ["React 18", "Vite", "Tailwind CSS", "Framer Motion", "React-Markdown", "EventSource API"],
+      Infra: ["100% localhost", "No API keys required", "RTX 3050 6GB", "Windows 11 / 8GB RAM"]
+    },
+    challenges: [
+      {
+        title: "Hallucinated citation markers",
+        body: "Local 7B models hallucinate citations — they invent [Source 9] when only 6 sources exist and place markers inconsistently. Rather than fight the model with heavier prompts, I built a format node that trusts the content and fixes the format: scans the output, strips orphaned markers, and rebuilds the References section programmatically from the citation map. Every reference in the final report is guaranteed to resolve to a real scraped URL."
+      },
+      {
+        title: "6GB VRAM can't hold two 7Bs",
+        body: "6GB VRAM can only hold one 7B model at a time, so parallel agent execution was off the table. I leaned into the constraint by using LangGraph's sequential node execution as the scheduler — Ollama swaps models between nodes naturally, no custom queueing needed. A pre-flight Ollama ping at pipeline start prevents the \"crash 3 minutes in with a cryptic ConnectionError\" failure mode."
+      },
+      {
+        title: "SSE reconnect duplicated events",
+        body: "SSE reconnection on mid-pipeline drops was replaying every event from index 0, causing duplicate agent cards, double-appended report tokens, and glitching source cards. Solved by stamping monotonic timestamps on every backend event and dropping anything with timestamp <= lastSeen in the frontend useStream primitive."
+      },
+      {
+        title: "Scrapers fail 20–30% of the time",
+        body: "Paywalls, bot detection, 404s. Rather than treat this as an error path, I designed the pipeline to degrade gracefully — failures go into state[\"scraping_errors\"], surface in the UI with their reason, and the pipeline continues. A report from 4 of 8 sources beats a crashed pipeline every time."
+      }
+    ],
+    metrics: [
+      { value: "3–8 min", label: "Full pipeline (RTX 3050)" },
+      { value: "0", label: "API keys required" },
+      { value: "~20", label: "RAG chunks / synthesis" },
+      { value: "~75kB", label: "Frontend bundle" },
+      { value: "3", label: "Specialized agents" },
+      { value: "10", label: "SSE event types" }
+    ],
+    status: "Shipped"
   }
 }
