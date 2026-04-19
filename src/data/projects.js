@@ -18,24 +18,6 @@ export const projects = [
     demo: null
   },
   {
-    name: "SynthBoard",
-    desc: "Local fine-tuning pipeline + model arena for consumer GPUs. Upload datasets → auto-format → QLoRA fine-tune via unsloth → export to GGUF → compare against base models in a blind side-by-side arena with Elo ratings. Built for RTX 3050 6GB.",
-    tags: ["Python", "FastAPI", "React", "Vite", "Tailwind CSS", "Ollama", "QLoRA", "Unsloth", "LoRA", "Transformers", "BitsAndBytes", "GGUF", "Llama.cpp", "SQLite", "SSE", "Local-LLM", "Elo Rating"],
-    category: "Local LLMs",
-    featured: true,
-    github: "https://github.com/Swapnil-bo/SynthBoard",
-    demo: null
-  },
-  {
-    name: "Startup Idea Roulette",
-    desc: "Spin three slot wheels, get a random audience + problem + tech, watch a local LLM roast your doomed startup idea in real time. Built with FastAPI, Ollama (Mistral 7B), React + Vite, and a dangerously good prompt.",
-    tags: ["Python", "React", "Vite", "FastAPI", "JavaScript", "Tailwind CSS", "Framer Motion", "Ollama", "Mistral 7B", "Local AI", "Streaming", "Local LLM"],
-    category: "Local LLMs",
-    featured: false,
-    github: "https://github.com/Swapnil-bo/Startup-Idea-Roulette",
-    demo: null
-  },
-  {
     name: "AutoResearcher",
     desc: "Local-first multi-agent research system. Ask a question, get a cited research report. LangGraph orchestrates three specialized AI agents (Search → Extract → Synthesize) running entirely on Ollama. Open-source Perplexity, on your machine.",
     tags: ["Python", "LangGraph", "FastAPI", "ChromaDB", "Ollama", "Multi-Agent", "RAG", "React", "Local-LLM", "LangChain"],
@@ -52,6 +34,24 @@ export const projects = [
     featured: false,
     github: "https://github.com/Swapnil-bo/FossilAI",
     demo: "https://fossil-ai.vercel.app/"
+  },
+  {
+    name: "SynthBoard",
+    desc: "Local fine-tuning pipeline + model arena for consumer GPUs. Upload datasets → auto-format → QLoRA fine-tune via unsloth → export to GGUF → compare against base models in a blind side-by-side arena with Elo ratings. Built for RTX 3050 6GB.",
+    tags: ["Python", "FastAPI", "React", "Vite", "Tailwind CSS", "Ollama", "QLoRA", "Unsloth", "LoRA", "Transformers", "BitsAndBytes", "GGUF", "Llama.cpp", "SQLite", "SSE", "Local-LLM", "Elo Rating"],
+    category: "Local LLMs",
+    featured: true,
+    github: "https://github.com/Swapnil-bo/SynthBoard",
+    demo: null
+  },
+  {
+    name: "Startup Idea Roulette",
+    desc: "Spin three slot wheels, get a random audience + problem + tech, watch a local LLM roast your doomed startup idea in real time. Built with FastAPI, Ollama (Mistral 7B), React + Vite, and a dangerously good prompt.",
+    tags: ["Python", "React", "Vite", "FastAPI", "JavaScript", "Tailwind CSS", "Framer Motion", "Ollama", "Mistral 7B", "Local AI", "Streaming", "Local LLM"],
+    category: "Local LLMs",
+    featured: false,
+    github: "https://github.com/Swapnil-bo/Startup-Idea-Roulette",
+    demo: null
   },
   {
     name: "NETLIFE",
