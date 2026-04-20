@@ -4,6 +4,7 @@ import { projects } from '../data/projects'
 import ProjectCard from './ProjectCard'
 import ProjectModal from './ProjectModal'
 import { useTextScramble } from './useTextScramble'
+import { playClickSound } from '../utils/hoverSound'
 
 const filters = ['All', 'Featured', 'Agentic AI', 'Local LLMs', 'ML & Data Science', 'Full-Stack']
 
@@ -87,6 +88,7 @@ function Projects() {
               }}
               onMouseEnter={(e) => {
                 if (activeFilter !== filter) e.currentTarget.style.borderColor = 'var(--border-glow)'
+                playClickSound()
               }}
               onMouseLeave={(e) => {
                 if (activeFilter !== filter) e.currentTarget.style.borderColor = 'var(--border-dim)'
@@ -118,6 +120,7 @@ function Projects() {
             </span>
             <button
               onClick={clearTag}
+              onMouseEnter={() => playClickSound()}
               className="font-jetbrains text-xs px-3 py-1 rounded border flex items-center gap-2 transition-all duration-150 cursor-pointer glow-green"
               style={{
                 background: 'var(--neon-green)',

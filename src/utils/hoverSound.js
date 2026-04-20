@@ -1,3 +1,5 @@
+import { isMuted } from './soundPrefs'
+
 let audioCtx = null
 
 function initAudio() {
@@ -8,6 +10,7 @@ function initAudio() {
 }
 
 export function playClickSound() {
+  if (isMuted()) return
   try {
     const ctx = initAudio()
     if (ctx.state === 'suspended') {

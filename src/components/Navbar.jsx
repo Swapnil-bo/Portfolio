@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import SoundToggle from './SoundToggle'
+import { playClickSound } from '../utils/hoverSound'
 
 const navLinks = [
   { label: 'About', id: 'about' },
@@ -85,7 +87,10 @@ function Navbar() {
                 onClick={() => scrollTo(link.id)}
                 className="relative font-jetbrains text-sm transition-all duration-150 hover:-translate-y-px bg-transparent border-none cursor-pointer"
                 style={{ color: activeSection === link.id ? 'var(--neon-green)' : 'var(--text-secondary)' }}
-                onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--neon-green)' }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = 'var(--neon-green)'
+                  playClickSound()
+                }}
                 onMouseLeave={(e) => { if (activeSection !== link.id) e.currentTarget.style.color = 'var(--text-secondary)' }}
               >
                 {link.label}
@@ -104,6 +109,9 @@ function Navbar() {
 
           {/* Desktop Right Actions */}
           <div className="hidden md:flex items-center gap-3">
+            {/* Sound Toggle */}
+            <SoundToggle />
+
             {/* Resume Button */}
             <a
               href="/Swapnil_Hazra_Resume_.pdf"
@@ -210,6 +218,7 @@ function Navbar() {
                 <span className="pulse-dot" />
                 Open to Internships
               </div>
+              <SoundToggle />
             </motion.div>
           </motion.div>
         )}
