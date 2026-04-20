@@ -45,6 +45,15 @@ export const projects = [
     demo: null
   },
   {
+    name: "ONEIROS",
+    desc: "Describe your dream, receive a deep Jungian, Freudian & symbolic analysis powered by qwen2.5:7b running fully local. Dark occult UI with animated mood gauge, symbol extraction & dream journal.",
+    tags: ["Python", "React", "Vite", "FastAPI", "JavaScript", "Ollama", "qwen2.5:7b", "Local LLM", "Local AI", "Framer Motion", "Zustand", "Pydantic"],
+    category: "Local LLMs",
+    featured: true,
+    github: "https://github.com/Swapnil-bo/Dream-Interpreter",
+    demo: null
+  },
+  {
     name: "Startup Idea Roulette",
     desc: "Spin three slot wheels, get a random audience + problem + tech, watch a local LLM roast your doomed startup idea in real time. Built with FastAPI, Ollama (Mistral 7B), React + Vite, and a dangerously good prompt.",
     tags: ["Python", "React", "Vite", "FastAPI", "JavaScript", "Tailwind CSS", "Framer Motion", "Ollama", "Mistral 7B", "Local AI", "Streaming", "Local LLM"],

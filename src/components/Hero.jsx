@@ -6,7 +6,7 @@ import { playClickSound } from '../utils/hoverSound'
 const typedText = '> initializing swapnil_hazra...'
 
 const stats = [
-  { value: 24, label: 'Projects Shipped', suffix: '' },
+  { value: 25, label: 'Projects Shipped', suffix: '' },
   { value: 100, label: 'Days Challenge', suffix: '' },
   { value: 6, label: 'Agent Systems', suffix: '+' },
 ]
