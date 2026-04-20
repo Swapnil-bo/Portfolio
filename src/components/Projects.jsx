@@ -9,16 +9,35 @@ const filters = ['All', 'Featured', 'Agentic AI', 'Local LLMs', 'ML & Data Scien
 
 function Projects() {
   const [activeFilter, setActiveFilter] = useState('All')
+  const [activeTag, setActiveTag] = useState(null)
   const [selectedProject, setSelectedProject] = useState(null)
   const headerRef = useRef(null)
   const headerInView = useInView(headerRef, { once: true, amount: 0.1 })
   const scrambledTitle = useTextScramble("What I've Built", headerInView)
 
-  const filtered = activeFilter === 'All'
-    ? projects
-    : activeFilter === 'Featured'
-      ? projects.filter(p => p.featured)
-      : projects.filter(p => p.category === activeFilter)
+  const filtered = activeTag
+    ? projects.filter(p => p.tags.includes(activeTag))
+    : activeFilter === 'All'
+      ? projects
+      : activeFilter === 'Featured'
+        ? projects.filter(p => p.featured)
+        : projects.filter(p => p.category === activeFilter)
+
+  const handleTagClick = (tag) => {
+    setActiveTag(prev => {
+      const next = prev === tag ? null : tag
+      if (next) setActiveFilter('All')
+      return next
+    })
+    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
+  const handleFilterClick = (filter) => {
+    setActiveFilter(filter)
+    setActiveTag(null)
+  }
+
+  const clearTag = () => setActiveTag(null)
 
   return (
     <section id="projects" className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
@@ -55,7 +74,7 @@ function Projects() {
           {filters.map(filter => (
             <button
               key={filter}
-              onClick={() => setActiveFilter(filter)}
+              onClick={() => handleFilterClick(filter)}
               className="font-jetbrains text-xs px-4 py-2.5 md:py-1.5 rounded border transition-all duration-150 cursor-pointer"
               style={{
                 background: activeFilter === filter
@@ -83,6 +102,37 @@ function Projects() {
         </span>
       </motion.div>
 
+      {/* Active tag pill */}
+      <AnimatePresence>
+        {activeTag && (
+          <motion.div
+            key="active-tag-pill"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2 }}
+            className="mb-6 flex items-center gap-2"
+          >
+            <span className="font-jetbrains text-xs" style={{ color: 'var(--text-ghost)' }}>
+              ▸ filtering by tag:
+            </span>
+            <button
+              onClick={clearTag}
+              className="font-jetbrains text-xs px-3 py-1 rounded border flex items-center gap-2 transition-all duration-150 cursor-pointer glow-green"
+              style={{
+                background: 'var(--neon-green)',
+                color: 'var(--bg-void)',
+                borderColor: 'var(--neon-green)',
+              }}
+              aria-label={`Clear ${activeTag} tag filter`}
+            >
+              {activeTag}
+              <span style={{ fontSize: '14px', lineHeight: 1 }}>✕</span>
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Project Grid */}
       <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         <AnimatePresence mode="popLayout">
@@ -92,6 +142,8 @@ function Projects() {
               project={project}
               index={i}
               onOpenDetail={setSelectedProject}
+              onTagClick={handleTagClick}
+              activeTag={activeTag}
             />
           ))}
         </AnimatePresence>

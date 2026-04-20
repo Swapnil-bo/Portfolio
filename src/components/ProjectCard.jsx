@@ -9,7 +9,7 @@ const categoryConfig = {
   'Local LLMs': { color: 'var(--neon-hot)', rgb: '255, 51, 102' },
 }
 
-function ProjectCard({ project, index, onOpenDetail }) {
+function ProjectCard({ project, index, onOpenDetail, onTagClick, activeTag }) {
   const hasDetails = Boolean(projectDetails[project.name])
   const cat = categoryConfig[project.category] || categoryConfig['Agentic AI']
   const cardRef = useRef(null)
@@ -151,19 +151,41 @@ function ProjectCard({ project, index, onOpenDetail }) {
 
       {/* Tags */}
       <div className="flex flex-wrap gap-1.5 mb-4 relative z-2">
-        {project.tags.map(tag => (
-          <span
-            key={tag}
-            className="tag-chip font-jetbrains text-[11px] px-2 py-0.5 border rounded-[3px]"
-            style={{
-              background: 'var(--bg-void)',
-              borderColor: 'var(--border-dim)',
-              color: 'var(--text-secondary)',
-            }}
-          >
-            {tag}
-          </span>
-        ))}
+        {project.tags.map(tag => {
+          const isActive = activeTag === tag
+          return (
+            <button
+              key={tag}
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation()
+                onTagClick?.(tag)
+              }}
+              className="tag-chip-clickable font-jetbrains text-[11px] px-2 py-0.5 border rounded-[3px] cursor-pointer transition-all duration-150"
+              style={{
+                background: isActive ? 'rgba(0, 255, 136, 0.12)' : 'var(--bg-void)',
+                borderColor: isActive ? 'var(--neon-green)' : 'var(--border-dim)',
+                color: isActive ? 'var(--neon-green)' : 'var(--text-secondary)',
+              }}
+              onMouseEnter={(e) => {
+                if (!isActive) {
+                  e.currentTarget.style.borderColor = 'var(--border-glow)'
+                  e.currentTarget.style.color = 'var(--neon-green)'
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!isActive) {
+                  e.currentTarget.style.borderColor = 'var(--border-dim)'
+                  e.currentTarget.style.color = 'var(--text-secondary)'
+                }
+              }}
+              aria-label={`Filter projects by ${tag}`}
+              aria-pressed={isActive}
+            >
+              {tag}
+            </button>
+          )
+        })}
       </div>
 
       {/* Divider */}
