@@ -40,6 +40,13 @@ function Projects() {
 
   const clearTag = () => setActiveTag(null)
 
+  const clearAllFilters = () => {
+    setActiveTag(null)
+    setActiveFilter('All')
+  }
+
+  const activeLabel = activeTag || (activeFilter !== 'All' ? activeFilter : null)
+
   return (
     <section id="projects" className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
       {/* Section Header */}
@@ -136,21 +143,71 @@ function Projects() {
         )}
       </AnimatePresence>
 
-      {/* Project Grid */}
-      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <AnimatePresence mode="popLayout">
-          {filtered.map((project, i) => (
-            <ProjectCard
-              key={project.name}
-              project={project}
-              index={i}
-              onOpenDetail={setSelectedProject}
-              onTagClick={handleTagClick}
-              activeTag={activeTag}
-            />
-          ))}
-        </AnimatePresence>
-      </motion.div>
+      {/* Project Grid OR empty state */}
+      <AnimatePresence mode="wait">
+        {filtered.length === 0 ? (
+          <motion.div
+            key="empty-state"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.25 }}
+            className="border border-dashed rounded p-10 md:p-14 text-center flex flex-col items-center gap-5"
+            style={{
+              background: 'var(--bg-surface)',
+              borderColor: 'var(--border-dim)',
+            }}
+          >
+            <p className="font-jetbrains text-xs" style={{ color: 'var(--text-ghost)' }}>
+              // query returned 0 results
+            </p>
+            <p className="font-mono text-sm md:text-base" style={{ color: 'var(--text-secondary)' }}>
+              {activeLabel ? (
+                <>
+                  no projects matched{' '}
+                  <span style={{ color: 'var(--neon-green)' }}>[{activeLabel}]</span>
+                </>
+              ) : (
+                <>no projects to show</>
+              )}
+            </p>
+            <button
+              type="button"
+              onClick={clearAllFilters}
+              onMouseEnter={() => playClickSound()}
+              className="font-jetbrains text-xs px-4 py-2 border rounded transition-all duration-150 cursor-pointer"
+              style={{
+                color: 'var(--neon-green)',
+                borderColor: 'var(--neon-green)',
+                background: 'transparent',
+              }}
+              onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(0,255,136,0.08)' }}
+              onMouseOut={(e) => { e.currentTarget.style.background = 'transparent' }}
+            >
+              [ clear filters ]
+            </button>
+          </motion.div>
+        ) : (
+          <motion.div
+            key="project-grid"
+            layout
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+          >
+            <AnimatePresence mode="popLayout">
+              {filtered.map((project, i) => (
+                <ProjectCard
+                  key={project.name}
+                  project={project}
+                  index={i}
+                  onOpenDetail={setSelectedProject}
+                  onTagClick={handleTagClick}
+                  activeTag={activeTag}
+                />
+              ))}
+            </AnimatePresence>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
     </section>
