@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#00ff88" stroke-width="1" opacity="0.05"/>
+    </pattern>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="75%">
+      <stop offset="55%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.65"/>
+    </radialGradient>
+    <filter id="greenGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Void background -->
+  <rect width="1200" height="630" fill="#06060e"/>
+  <!-- Faint grid -->
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Top-left terminal cue -->
+  <text x="80" y="110"
+        font-family="Consolas, 'Courier New', monospace"
+        font-size="22" fill="#3f3f50" letter-spacing="1">
+    &gt; swapnil.hazra/portfolio
+  </text>
+
+  <!-- Name -->
+  <text x="80" y="320"
+        font-family="'Segoe UI', Helvetica, Arial, sans-serif"
+        font-weight="700" font-size="128"
+        fill="#e4e4e7" letter-spacing="-3">
+    Swapnil Hazra
+  </text>
+
+  <!-- Title -->
+  <text x="80" y="440"
+        font-family="'Segoe UI', Helvetica, Arial, sans-serif"
+        font-weight="600" font-size="72"
+        fill="#00ff88" letter-spacing="-1"
+        filter="url(#greenGlow)">
+    AI Engineer
+  </text>
+
+  <!-- Bottom-left cursor -->
+  <text x="80" y="555"
+        font-family="Consolas, 'Courier New', monospace"
+        font-size="28" fill="#00ff88">_</text>
+
+  <!-- Top-right accent glyph -->
+  <text x="1080" y="110"
+        font-family="Consolas, 'Courier New', monospace"
+        font-weight="700" font-size="56"
+        fill="#00ff88" opacity="0.5">⟩</text>
+
+  <!-- Vignette overlay -->
+  <rect width="1200" height="630" fill="url(#vignette)" pointer-events="none"/>
+</svg>
