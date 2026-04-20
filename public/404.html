@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>404 · path not found · Swapnil Hazra</title>
+    <meta name="robots" content="noindex" />
+    <style>
+      :root {
+        --bg-void: #06060e;
+        --bg-surface: #0c0c18;
+        --neon-green: #00ff88;
+        --neon-cyan: #00d4ff;
+        --neon-hot: #ff3366;
+        --text-primary: #e4e4e7;
+        --text-secondary: #71717a;
+        --text-ghost: #3f3f50;
+        --border-dim: rgba(0, 255, 136, 0.06);
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html, body {
+        height: 100%;
+        background: var(--bg-void);
+        color: var(--text-primary);
+        font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+        overflow: hidden;
+      }
+
+      /* Faint grid */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image:
+          linear-gradient(var(--neon-green) 1px, transparent 1px),
+          linear-gradient(90deg, var(--neon-green) 1px, transparent 1px);
+        background-size: 80px 80px;
+        opacity: 0.04;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* Scanlines + vignette */
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.18) 2px, rgba(0,0,0,0.18) 4px),
+          radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.7) 100%);
+        pointer-events: none;
+        z-index: 2;
+      }
+
+      .wrap {
+        position: relative;
+        z-index: 3;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
+
+      .terminal {
+        max-width: 640px;
+        width: 100%;
+        padding: 32px 28px;
+        background: var(--bg-surface);
+        border: 1px solid var(--border-dim);
+        border-radius: 6px;
+        box-shadow: 0 0 40px rgba(0, 255, 136, 0.06), 0 0 120px rgba(0, 255, 136, 0.03);
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 24px;
+        font-size: 12px;
+        color: var(--text-ghost);
+        letter-spacing: 1px;
+      }
+
+      .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--neon-hot); box-shadow: 0 0 8px var(--neon-hot); }
+      .dot.amber { background: #f5a524; box-shadow: 0 0 8px #f5a524; }
+      .dot.green { background: var(--neon-green); box-shadow: 0 0 8px var(--neon-green); }
+
+      .header-title { margin-left: auto; }
+
+      .line { display: block; line-height: 1.7; font-size: 14px; }
+      .line.muted { color: var(--text-secondary); }
+      .line.ghost { color: var(--text-ghost); }
+      .line.green { color: var(--neon-green); }
+      .line.hot { color: var(--neon-hot); }
+      .line.cyan { color: var(--neon-cyan); }
+
+      .code-404 {
+        font-size: clamp(56px, 12vw, 88px);
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -2px;
+        margin: 18px 0 12px;
+        color: var(--neon-hot);
+        text-shadow: 0 0 24px rgba(255, 51, 102, 0.45), 0 0 60px rgba(255, 51, 102, 0.15);
+      }
+
+      .path {
+        word-break: break-all;
+        color: var(--neon-cyan);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 24px;
+      }
+
+      .btn {
+        font-family: inherit;
+        font-size: 12px;
+        padding: 10px 16px;
+        border-radius: 4px;
+        border: 1px solid var(--neon-green);
+        background: transparent;
+        color: var(--neon-green);
+        text-decoration: none;
+        cursor: pointer;
+        transition: background 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .btn:hover {
+        background: rgba(0, 255, 136, 0.08);
+        transform: translateY(-1px);
+        box-shadow: 0 0 18px rgba(0, 255, 136, 0.2);
+      }
+      .btn.cyan {
+        border-color: var(--neon-cyan);
+        color: var(--neon-cyan);
+      }
+      .btn.cyan:hover {
+        background: rgba(0, 212, 255, 0.08);
+        box-shadow: 0 0 18px rgba(0, 212, 255, 0.2);
+      }
+
+      .cursor {
+        display: inline-block;
+        width: 8px;
+        height: 14px;
+        background: var(--neon-green);
+        margin-left: 4px;
+        vertical-align: middle;
+        animation: blink 1s step-end infinite;
+      }
+
+      @keyframes blink {
+        50% { opacity: 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="terminal" role="alert" aria-labelledby="err-title">
+        <div class="header" aria-hidden="true">
+          <span class="dot"></span>
+          <span class="dot amber"></span>
+          <span class="dot green"></span>
+          <span class="header-title">/dev/null</span>
+        </div>
+
+        <span class="line ghost">&gt; resolving <span class="path" id="req-path">/</span> ...</span>
+        <span class="line hot" id="err-title">&gt; ERROR: route not found</span>
+
+        <div class="code-404">404</div>
+
+        <span class="line muted">The page you requested does not exist in this neural matrix.</span>
+        <span class="line ghost">// possible causes: typo · removed · dead link</span>
+
+        <div class="actions">
+          <a class="btn" href="/">↵ return home</a>
+          <a class="btn cyan" href="/#projects">view projects →</a>
+        </div>
+
+        <span class="line ghost" style="margin-top: 18px;">&gt; awaiting input<span class="cursor" aria-hidden="true"></span></span>
+      </div>
+    </div>
+
+    <script>
+      // Show the path the user actually tried to visit
+      try {
+        var p = window.location.pathname + window.location.search;
+        if (p && p !== '/') {
+          document.getElementById('req-path').textContent = p;
+        }
+      } catch (e) { /* ignore */ }
+    </script>
+  </body>
+</html>
