@@ -171,9 +171,6 @@ export const projectDetails = {
       { value: "12", label: "Schema sections" },
       { value: "5", label: "Enum-validated fields" }
     ],
-    extraLinks: [
-      { label: "LinkedIn Post", url: "https://www.linkedin.com/feed/update/urn:li:activity:7446196107120087041/" }
-    ],
     status: "Shipped"
   },
   "AutoResearcher": {
