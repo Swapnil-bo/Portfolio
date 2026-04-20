@@ -220,5 +220,47 @@ export const projectDetails = {
       { value: "10", label: "SSE event types" }
     ],
     status: "Shipped"
+  },
+  "ONEIROS": {
+    fullName: "ONEIROS — Dream Interpreter",
+    tagline: "A local-first AI oracle that decodes your dreams through Jungian, Freudian, and symbolic analysis — running entirely on your GPU, zero cloud, zero keys.",
+    problem: "Every \"AI dream interpreter\" online is a thin GPT-4 wrapper behind a paywall that gives you three generic sentences and calls it psychology. Dream analysis is inherently personal and private — your unconscious mind shouldn't be sent to a server in California. I wanted something that went genuinely deep across multiple psychological frameworks, felt like consulting an ancient oracle rather than a SaaS dashboard, and ran entirely on local hardware with no data leaving the machine.",
+    approach: [
+      "qwen2.5:7b receives a carefully engineered system prompt that gives it the persona of ONEIROS — an oracle versed in Jung, Freud, Campbell, von Franz, Hillman, and Bachelard — forced to respond in structured JSON",
+      "A 4-strategy JSON extraction pipeline fights back against every way a local LLM can malform its output: direct parse → brace extraction → markdown fence stripping → trailing comma repair",
+      "FastAPI validates the response through Pydantic v2 schemas with field constraints, clamps mood_score to [0.0, 1.0], normalizes symbol arrays, and retries with true exponential backoff (2s → 4s → 8s) on parse failure",
+      "React frontend renders 4 analysis tabs with a typewriter effect that pauses 18× longer on periods, 6× on commas — the oracle breathes",
+      "A 210° SVG arc gauge with mathematical RGB interpolation across 7 color anchors visualizes the dream's emotional signature from The Abyss to Transcendent"
+    ],
+    stack: {
+      AI: ["Ollama", "qwen2.5:7b", "Custom prompt engineering"],
+      Backend: ["FastAPI", "Python 3.11", "Pydantic v2", "pydantic-settings", "httpx"],
+      Frontend: ["React 18", "Vite 5", "Framer Motion 11", "Zustand 4", "html2canvas"],
+      Typography: ["Cinzel (display)", "Crimson Pro (body)", "JetBrains Mono (labels)"],
+      Storage: ["localStorage", "Schema versioning", "Migration system"]
+    },
+    challenges: [
+      {
+        title: "Local LLMs don't reliably return valid JSON",
+        body: "qwen2.5:7b would occasionally wrap responses in markdown fences, add trailing commas, or pad with preamble text. A single JSON.parse() call failed ~15% of the time. Built a 4-strategy extraction pipeline where each strategy is a progressively more aggressive attempt to recover valid JSON from malformed output. Failure rate dropped to near zero."
+      },
+      {
+        title: "The typewriter couldn't be naive",
+        body: "A character-per-tick typewriter at fixed speed felt robotic. Analysis text is dense with punctuation — periods, em-dashes, commas. Built a punctuation-aware delay system: periods pause 18× the base speed, em-dashes 10×, commas 6×. The result is text that feels like it's being considered, not printed. Recruiters who actually used the app noticed this immediately."
+      },
+      {
+        title: "SVG arc math for the mood gauge",
+        body: "CSS progress bars were rejected — they don't match the occult aesthetic. Built the gauge entirely in SVG: polar-to-cartesian conversion for tick marks, strokeDashoffset animation for the fill arc, a counter-rotating needle, and a 7-anchor RGB interpolation system for the color. The needle tip position, the glow filter, the pivot orb — all computed mathematically. No chart library. ~120 lines of pure SVG + Framer Motion."
+      }
+    ],
+    metrics: [
+      { value: "25–45s", label: "Analysis time (RTX 3050)" },
+      { value: "~99%", label: "JSON parse success" },
+      { value: "~4.2GB", label: "VRAM (qwen2.5:7b Q4)" },
+      { value: "100", label: "Dreams / journal" },
+      { value: "2×", label: "Share card retina" },
+      { value: "~3.2k", label: "Lines / 21 files" }
+    ],
+    status: "Shipped"
   }
 }
