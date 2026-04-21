@@ -27,6 +27,19 @@ function App() {
     initHoverSound()
   }, [])
 
+  // Restore hash-link scroll target after boot/mount
+  useEffect(() => {
+    if (!booted) return
+    const hash = window.location.hash
+    if (!hash || hash === '#') return
+    const id = decodeURIComponent(hash.slice(1))
+    const raf = requestAnimationFrame(() => {
+      const el = document.getElementById(id)
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    })
+    return () => cancelAnimationFrame(raf)
+  }, [booted])
+
   const handleBootComplete = () => {
     sessionStorage.setItem('booted', 'true')
     setBooted(true)
