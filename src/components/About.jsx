@@ -76,6 +76,55 @@ function About() {
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.4, delay: 0.1 }}
         >
+          {/* Avatar + identity block */}
+          <div className="flex items-center gap-5 mb-6">
+            <div className="relative flex-shrink-0">
+              <img
+                src="/swapnil-hazra.jpeg"
+                alt="Swapnil Hazra"
+                className="w-[110px] h-[110px] md:w-[120px] md:h-[120px] rounded-full object-cover"
+                style={{
+                  border: '2px solid var(--neon-green)',
+                  boxShadow: '0 0 20px rgba(0,255,136,0.25), 0 0 60px rgba(0,255,136,0.08)',
+                }}
+              />
+              <span
+                className="absolute bottom-1.5 right-1.5 rounded-full pulse-dot"
+                style={{
+                  width: 12,
+                  height: 12,
+                  background: 'var(--neon-green)',
+                  border: '2px solid var(--bg-void)',
+                  boxShadow: '0 0 8px rgba(0,255,136,0.6)',
+                }}
+                aria-hidden="true"
+              />
+            </div>
+            <div className="flex flex-col">
+              <p
+                className="font-jetbrains text-[11px] uppercase tracking-wider mb-1"
+                style={{ color: 'var(--text-ghost)' }}
+              >
+                // operator
+              </p>
+              <p
+                className="font-syne font-semibold text-lg md:text-xl mb-1"
+                style={{ color: 'var(--text-primary)' }}
+              >
+                ⟩ swapnil.hazra
+              </p>
+              <p
+                className="font-mono text-[11px] md:text-xs flex items-center gap-1.5"
+                style={{ color: 'var(--neon-green)' }}
+              >
+                <span
+                  className="pulse-dot"
+                  style={{ width: 6, height: 6, background: 'var(--neon-green)' }}
+                />
+                online &amp; available
+              </p>
+            </div>
+          </div>
           <div className="font-mono text-sm md:text-base leading-[1.7] space-y-4" style={{ color: 'var(--text-secondary)' }}>
             <p>
               I'm an AI Engineer specializing in{' '}
