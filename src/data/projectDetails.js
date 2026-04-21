@@ -173,6 +173,51 @@ export const projectDetails = {
     ],
     status: "Shipped"
   },
+  "Git Wrapped": {
+    fullName: "Git Wrapped",
+    tagline: "Spotify Wrapped for your GitHub — drop any username, get a 5-card AI-roasted story deck that's built to be screenshotted and shared.",
+    problem: "GitHub's own stats pages are dashboards, not stories. People will screenshot a Wrapped card to a group chat; nobody screenshots a contribution graph. There was no layer that turned raw commit history into something personal, funny, and shareable in under 10 seconds.",
+    approach: [
+      "Stateless FastAPI backend fans out 20+ async GitHub calls in parallel (asyncio.gather across top 10 repos) to stay under an 8s budget",
+      "stats.py aggregates languages by bytes, peak hours from commit timestamps, and recent streak from public events into a single typed payload",
+      "One Groq call (llama-3.3-70b) generates all 5 cards' copy in one JSON response — schema-locked via prompt + Pydantic validation",
+      "React deck renders 5 swipeable cards with Framer Motion + react-countup; Card 5 exports to PNG via html2canvas for sharing",
+      "Hardcoded fallback copy if Groq returns malformed JSON — request never crashes, only the wit degrades"
+    ],
+    stack: {
+      AI: ["Groq", "llama-3.3-70b-versatile"],
+      Backend: ["FastAPI", "Python 3.11", "httpx (async)", "Pydantic v2", "Uvicorn"],
+      Frontend: ["React 18", "Vite 5", "TailwindCSS", "Framer Motion", "html2canvas", "react-swipeable", "react-countup"],
+      Infra: ["Render (API)", "Vercel (frontend)", "GitHub REST API v3"]
+    },
+    challenges: [
+      {
+        title: "GitHub's ~90-event streak cap",
+        body: "GitHub's events API hard-caps at ~90 events, so a \"longest streak of the year\" is structurally impossible. Rather than fake it with scraping, I labelled it \"Recent Streak\" with a visible \"(based on last ~90 events)\" caveat. Honest UX over inflated metrics."
+      },
+      {
+        title: "Groq's 5% malformed-JSON tax",
+        body: "Groq returns valid JSON ~95% of the time — the other 5% would 500 the whole request. Built a one-shot retry that appends \"your last response was not valid JSON\" and a hardcoded FALLBACK_COPY dict as the second safety net. Two layers of degradation, zero user-facing crashes."
+      },
+      {
+        title: "Every card clipped on first deploy",
+        body: "First production deploy had every card clipped on the right edge. Root cause was three stacked bugs: the deck wrapper had no overflow-x clamp so Framer Motion's slide-in (x: 300 → 0) bled past the viewport, headlines lacked overflow-wrap so long Groq-generated words pushed card internals wider than the card, and pills had a fixed max-width that assumed a ≥480px container. Fixed with min(480px, calc(100vw - 2rem)) on the deck and word-break on every text element."
+      },
+      {
+        title: "Twitter can't attach images via URL",
+        body: "Twitter's Web Intent API cannot attach images via URL — a hard limitation, not a missing feature. Instead of building a backend image-host pipeline for v1, I made the share button compelling text-only and added a \"Download the card and attach it to your tweet\" hint. Ship the 80% instead of building infra for the 20%."
+      }
+    ],
+    metrics: [
+      { value: "~6s", label: "End-to-end p50" },
+      { value: "~3s", label: "GitHub fan-out" },
+      { value: "~2s", label: "Groq generation" },
+      { value: "1k / 400", label: "Input / output tokens" },
+      { value: "10 × 100", label: "Top repos × commits" },
+      { value: "$0", label: "Fits Groq free tier" }
+    ],
+    status: "Shipped"
+  },
   "AutoResearcher": {
     fullName: "AutoResearcher",
     tagline: "A 3-agent deep research system that reads the web, cites every claim, and runs entirely on a 6GB laptop GPU — open-source Perplexity Pro with the curtain pulled back.",
