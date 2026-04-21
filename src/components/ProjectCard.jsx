@@ -13,39 +13,60 @@ function ProjectCard({ project, index, onOpenDetail, onTagClick, activeTag }) {
   const hasDetails = Boolean(projectDetails[project.name])
   const cat = categoryConfig[project.category] || categoryConfig['Agentic AI']
   const cardRef = useRef(null)
+  const rafRef = useRef(0)
+  const latestPointerRef = useRef(null)
   const [isMobile, setIsMobile] = useState(false)
-  const [tiltStyle, setTiltStyle] = useState({})
-  const [glowPos, setGlowPos] = useState({ x: 50, y: 50 })
 
   useEffect(() => {
     setIsMobile(window.matchMedia('(pointer: coarse)').matches)
   }, [])
 
-  const handleMouseMove = useCallback((e) => {
-    if (isMobile || !cardRef.current) return
-    const rect = cardRef.current.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
+  useEffect(() => {
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+    }
+  }, [])
+
+  const applyTilt = useCallback(() => {
+    rafRef.current = 0
+    const card = cardRef.current
+    const pointer = latestPointerRef.current
+    if (!card || !pointer) return
+
+    const rect = card.getBoundingClientRect()
+    const x = pointer.clientX - rect.left
+    const y = pointer.clientY - rect.top
     const cx = rect.width / 2
     const cy = rect.height / 2
-
     const rotateX = ((y - cy) / cy) * -8
     const rotateY = ((x - cx) / cx) * 8
 
-    setTiltStyle({
-      transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`,
-    })
-    setGlowPos({
-      x: (x / rect.width) * 100,
-      y: (y / rect.height) * 100,
-    })
-  }, [isMobile])
+    // Write directly — no setState, no re-render.
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`
+    card.style.setProperty('--glow-x', `${(x / rect.width) * 100}%`)
+    card.style.setProperty('--glow-y', `${(y / rect.height) * 100}%`)
+  }, [])
+
+  const handleMouseMove = useCallback((e) => {
+    if (isMobile) return
+    latestPointerRef.current = { clientX: e.clientX, clientY: e.clientY }
+    if (!rafRef.current) {
+      rafRef.current = requestAnimationFrame(applyTilt)
+    }
+  }, [isMobile, applyTilt])
 
   const handleMouseLeave = useCallback(() => {
-    setTiltStyle({
-      transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)',
-    })
-    setGlowPos({ x: 50, y: 50 })
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current)
+      rafRef.current = 0
+    }
+    latestPointerRef.current = null
+    const card = cardRef.current
+    if (!card) return
+    // Clear inline transform so framer-motion can reclaim it; reset glow center.
+    card.style.transform = ''
+    card.style.setProperty('--glow-x', '50%')
+    card.style.setProperty('--glow-y', '50%')
   }, [])
 
   return (
@@ -62,7 +83,8 @@ function ProjectCard({ project, index, onOpenDetail, onTagClick, activeTag }) {
         borderColor: 'var(--border-dim)',
         transition: 'transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease',
         '--card-glow-rgb': cat.rgb,
-        ...tiltStyle,
+        '--glow-x': '50%',
+        '--glow-y': '50%',
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -92,7 +114,7 @@ function ProjectCard({ project, index, onOpenDetail, onTagClick, activeTag }) {
             left: 0,
             right: 0,
             bottom: 0,
-            background: `radial-gradient(circle at ${glowPos.x}% ${glowPos.y}%, rgba(var(--card-glow-rgb), 0.08) 0%, transparent 60%)`,
+            background: 'radial-gradient(circle at var(--glow-x) var(--glow-y), rgba(var(--card-glow-rgb), 0.08) 0%, transparent 60%)',
             pointerEvents: 'none',
             zIndex: 1,
           }}
