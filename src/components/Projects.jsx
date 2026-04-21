@@ -1,10 +1,13 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, lazy, Suspense } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { projects } from '../data/projects'
 import ProjectCard from './ProjectCard'
-import ProjectModal from './ProjectModal'
 import { useTextScramble } from './useTextScramble'
 import { playClickSound } from '../utils/hoverSound'
+
+// Lazy-loaded: ~400-line modal only needed after a card is clicked.
+// Keeps it out of the initial bundle.
+const ProjectModal = lazy(() => import('./ProjectModal'))
 
 const filters = ['All', 'Featured', 'Agentic AI', 'Local LLMs', 'ML & Data Science', 'Full-Stack']
 
@@ -12,7 +15,15 @@ function Projects() {
   const [activeFilter, setActiveFilter] = useState('All')
   const [activeTag, setActiveTag] = useState(null)
   const [selectedProject, setSelectedProject] = useState(null)
+  // Stays true after first open so the modal can play its exit animation on close
+  // instead of unmounting synchronously with selectedProject going null.
+  const [modalMounted, setModalMounted] = useState(false)
   const headerRef = useRef(null)
+
+  const openProject = (project) => {
+    setModalMounted(true)
+    setSelectedProject(project)
+  }
   const headerInView = useInView(headerRef, { once: true, amount: 0.1 })
   const scrambledTitle = useTextScramble("What I've Built", headerInView)
 
@@ -205,7 +216,7 @@ function Projects() {
                   key={project.name}
                   project={project}
                   index={i}
-                  onOpenDetail={setSelectedProject}
+                  onOpenDetail={openProject}
                   onTagClick={handleTagClick}
                   activeTag={activeTag}
                 />
@@ -215,7 +226,11 @@ function Projects() {
         )}
       </AnimatePresence>
 
-      <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+      {modalMounted && (
+        <Suspense fallback={null}>
+          <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+        </Suspense>
+      )}
     </section>
   )
 }
