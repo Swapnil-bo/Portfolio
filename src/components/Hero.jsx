@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import ParticleField from './ParticleField'
 import { playClickSound } from '../utils/hoverSound'
+import { prefersReducedMotion } from '../utils/reducedMotion'
 
 const typedText = '> initializing swapnil_hazra...'
 
@@ -19,6 +20,12 @@ function useCounter(target, shouldStart, duration = 1500) {
   useEffect(() => {
     if (!shouldStart || hasStarted.current) return
     hasStarted.current = true
+
+    // Reduced motion: snap to final value
+    if (prefersReducedMotion()) {
+      setCount(target)
+      return
+    }
 
     const startTime = performance.now()
 
@@ -90,8 +97,9 @@ function MagneticButton({ children, className, style, ...props }) {
 }
 
 function Hero() {
-  const [displayedChars, setDisplayedChars] = useState(0)
-  const [typingDone, setTypingDone] = useState(false)
+  const reduced = prefersReducedMotion()
+  const [displayedChars, setDisplayedChars] = useState(reduced ? typedText.length : 0)
+  const [typingDone, setTypingDone] = useState(reduced)
   const [startCounters, setStartCounters] = useState(false)
 
   // Start counters 500ms after typingDone (matches the stats bar stagger delay)
@@ -108,6 +116,7 @@ function Hero() {
 
   // Typed effect — one character every ~50ms for ~1.5s total
   useEffect(() => {
+    if (reduced) return
     if (displayedChars < typedText.length) {
       const timer = setTimeout(() => {
         setDisplayedChars(prev => prev + 1)
@@ -117,7 +126,7 @@ function Hero() {
     // Small pause after typing finishes before revealing content
     const doneTimer = setTimeout(() => setTypingDone(true), 200)
     return () => clearTimeout(doneTimer)
-  }, [displayedChars])
+  }, [displayedChars, reduced])
 
   return (
     <section id="hero" className="min-h-screen relative flex items-center overflow-hidden">

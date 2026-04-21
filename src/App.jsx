@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, MotionConfig } from 'framer-motion'
 import BootSequence from './components/BootSequence'
 import ScrollProgress from './components/ScrollProgress'
 import Navbar from './components/Navbar'
@@ -13,9 +13,12 @@ import CustomCursor from './components/CustomCursor'
 import EasterTerminal from './components/EasterTerminal'
 import SectionDivider from './components/SectionDivider'
 import { initHoverSound } from './utils/hoverSound'
+import { prefersReducedMotion } from './utils/reducedMotion'
 
 function App() {
   const [booted, setBooted] = useState(() => {
+    // Skip boot entirely if user prefers reduced motion
+    if (prefersReducedMotion()) return true
     return sessionStorage.getItem('booted') === 'true'
   })
 
@@ -30,7 +33,7 @@ function App() {
   }
 
   return (
-    <>
+    <MotionConfig reducedMotion="user">
       <CustomCursor />
 
       <AnimatePresence mode="wait">
@@ -57,7 +60,7 @@ function App() {
       )}
 
       <EasterTerminal />
-    </>
+    </MotionConfig>
   )
 }
 

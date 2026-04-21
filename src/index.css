@@ -436,3 +436,24 @@ body::before {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 255, 136, 0.3);
 }
+
+/* ========================================
+   REDUCED MOTION — respect user OS preference
+   Kills CSS animations/transitions + smooth scroll. Component-level
+   guards handle rAF loops (particles, scramble) and skip boot.
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto !important;
+  }
+}

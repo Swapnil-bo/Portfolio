@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { prefersReducedMotion } from '../utils/reducedMotion'
 
 const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789░▒▓█▀▄@#$%'
 
@@ -9,6 +10,11 @@ export function useTextScramble(text, isInView) {
   useEffect(() => {
     if (!isInView || hasPlayed.current) return
     hasPlayed.current = true
+
+    if (prefersReducedMotion()) {
+      setDisplayed(text)
+      return
+    }
 
     const duration = 600
     const length = text.length
