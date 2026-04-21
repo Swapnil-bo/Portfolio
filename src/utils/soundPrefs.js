@@ -8,7 +8,12 @@ function getDefaultMuted() {
 
 function readMuted() {
   if (typeof window === 'undefined') return false
-  const stored = window.localStorage.getItem(STORAGE_KEY)
+  let stored = null
+  try {
+    stored = window.localStorage.getItem(STORAGE_KEY)
+  } catch {
+    return getDefaultMuted()
+  }
   if (stored === null) return getDefaultMuted()
   return stored === 'true'
 }
