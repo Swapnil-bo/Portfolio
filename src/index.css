@@ -50,6 +50,15 @@ body {
   * {
     cursor: none !important;
   }
+
+  /* Restore native cursors on form elements — users need I-beam feedback
+     to see where they'll type and caret position while editing. */
+  input,
+  textarea,
+  select,
+  [contenteditable="true"] {
+    cursor: auto !important;
+  }
 }
 
 #root {
