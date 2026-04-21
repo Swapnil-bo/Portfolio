@@ -34,6 +34,10 @@ function App() {
 
   return (
     <MotionConfig reducedMotion="user">
+      <a href="#main-content" className="skip-link">
+        Skip to content
+      </a>
+
       <CustomCursor />
 
       <AnimatePresence mode="wait">
@@ -43,7 +47,7 @@ function App() {
       </AnimatePresence>
 
       {booted && (
-        <main>
+        <main id="main-content" tabIndex={-1}>
           <div className="noise-overlay" />
           <ScrollProgress />
           <Navbar />

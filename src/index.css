@@ -66,6 +66,34 @@ body {
 }
 
 /* ========================================
+   SKIP LINK (keyboard a11y)
+   ======================================== */
+
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10001;
+  padding: 10px 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--bg-void);
+  background: var(--neon-green);
+  border: 1px solid var(--neon-green);
+  border-radius: 4px;
+  text-decoration: none;
+  transform: translateY(-120%);
+  transition: transform 160ms ease;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(8px);
+  outline: 2px solid var(--neon-cyan);
+  outline-offset: 2px;
+}
+
+/* ========================================
    GLOW UTILITIES
    ======================================== */
 
