@@ -78,11 +78,17 @@ function Projects() {
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.4, delay: 0.1 }}
       >
-        <div className="flex flex-wrap gap-2">
+        <div
+          className="flex flex-wrap gap-2"
+          role="group"
+          aria-label="Filter projects by category"
+        >
           {filters.map(filter => (
             <button
               key={filter}
               onClick={() => handleFilterClick(filter)}
+              aria-pressed={activeFilter === filter}
+              aria-label={`Filter by ${filter}`}
               className="font-jetbrains text-xs px-4 py-2.5 md:py-1.5 rounded border transition-all duration-150 cursor-pointer"
               style={{
                 background: activeFilter === filter
