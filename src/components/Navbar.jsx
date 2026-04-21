@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import SoundToggle from './SoundToggle'
 import { playClickSound } from '../utils/hoverSound'
@@ -14,6 +14,8 @@ function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('')
   const [mobileOpen, setMobileOpen] = useState(false)
+  const hamburgerRef = useRef(null)
+  const overlayRef = useRef(null)
 
   // Scroll detection for background blur
   useEffect(() => {
@@ -49,6 +51,63 @@ function Navbar() {
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
+  }, [mobileOpen])
+
+  // Focus management + focus trap + Escape-to-close for mobile menu
+  useEffect(() => {
+    if (!mobileOpen) return
+
+    const triggerEl = hamburgerRef.current
+    const overlay = overlayRef.current
+    if (!overlay) return
+
+    const getFocusable = () =>
+      Array.from(
+        overlay.querySelectorAll(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+      ).filter(el => !el.hasAttribute('inert') && el.offsetParent !== null)
+
+    // Move focus into the dialog on open
+    const focusables = getFocusable()
+    if (focusables.length) focusables[0].focus()
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        e.preventDefault()
+        setMobileOpen(false)
+        return
+      }
+      if (e.key !== 'Tab') return
+
+      const items = getFocusable()
+      if (items.length === 0) {
+        e.preventDefault()
+        return
+      }
+      const first = items[0]
+      const last = items[items.length - 1]
+      const active = document.activeElement
+
+      if (e.shiftKey) {
+        if (active === first || !overlay.contains(active)) {
+          e.preventDefault()
+          last.focus()
+        }
+      } else {
+        if (active === last || !overlay.contains(active)) {
+          e.preventDefault()
+          first.focus()
+        }
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+      // Restore focus to the hamburger when the overlay closes
+      if (triggerEl) triggerEl.focus()
+    }
   }, [mobileOpen])
 
   const scrollTo = (id) => {
@@ -140,9 +199,12 @@ function Navbar() {
 
           {/* Mobile Hamburger */}
           <button
+            ref={hamburgerRef}
             className="md:hidden flex flex-col items-center justify-center gap-[5px] bg-transparent border-none cursor-pointer w-11 h-11"
             onClick={() => setMobileOpen(prev => !prev)}
-            aria-label="Toggle menu"
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
           >
             <span
               className="block w-5 h-[2px] transition-all duration-200"
@@ -173,6 +235,11 @@ function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
+            ref={overlayRef}
+            id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Site navigation"
             className="fixed inset-0 z-[45] flex flex-col items-center justify-center gap-8"
             style={{ background: 'rgba(6, 6, 14, 0.95)' }}
             initial={{ opacity: 0 }}
