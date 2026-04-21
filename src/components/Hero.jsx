@@ -159,13 +159,31 @@ function Hero() {
         {/* Line 3: Subtitle */}
         {typingDone && (
           <motion.p
-            className="font-syne font-semibold text-lg md:text-xl mb-4 text-glow"
+            className="font-syne font-semibold text-lg md:text-xl mb-3 text-glow"
             style={{ color: 'var(--neon-green)' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.2 }}
           >
             AI Engineer &amp; Vibe Coder
+          </motion.p>
+        )}
+
+        {/* Line 3b: Location & availability — recruiter-scan signal */}
+        {typingDone && (
+          <motion.p
+            className="font-mono text-xs md:text-sm mb-4 flex flex-wrap items-center gap-x-2 gap-y-1"
+            style={{ color: 'var(--text-secondary)' }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, delay: 0.25 }}
+          >
+            <span>📍 Kolkata, India</span>
+            <span style={{ color: 'var(--text-ghost)' }}>·</span>
+            <span className="inline-flex items-center gap-1.5" style={{ color: 'var(--neon-green)' }}>
+              <span className="pulse-dot" />
+              Available Summer 2026
+            </span>
           </motion.p>
         )}
 
