@@ -11,6 +11,7 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import CustomCursor from './components/CustomCursor'
 import EasterTerminal from './components/EasterTerminal'
+import KeyboardShortcuts from './components/KeyboardShortcuts'
 import SectionDivider from './components/SectionDivider'
 import { initHoverSound } from './utils/hoverSound'
 import { prefersReducedMotion } from './utils/reducedMotion'
@@ -77,6 +78,7 @@ function App() {
       )}
 
       <EasterTerminal />
+      <KeyboardShortcuts />
     </MotionConfig>
   )
 }
