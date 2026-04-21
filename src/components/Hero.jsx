@@ -8,7 +8,7 @@ const typedText = '> initializing swapnil_hazra...'
 const stats = [
   { value: 26, label: 'Projects Shipped', suffix: '' },
   { value: 100, label: 'Days Challenge', suffix: '' },
-  { value: 6, label: 'Agent Systems', suffix: '+' },
+  { value: 13, label: 'Agent Systems', suffix: '+' },
 ]
 
 // Animated counter hook
