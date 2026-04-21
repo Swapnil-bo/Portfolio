@@ -47,9 +47,34 @@
     <!-- Google Fonts: Orbitron, Syne, IBM Plex Mono, JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Preload the Google Fonts CSS so font-face discovery starts immediately
+         and above-the-fold Syne / IBM Plex swaps with minimal FOUT. -->
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=JetBrains+Mono:wght@400&family=Orbitron:wght@700&family=Syne:wght@600;700&display=swap"
+    />
+    <link
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=JetBrains+Mono:wght@400&family=Orbitron:wght@700&family=Syne:wght@600;700&display=swap"
+    />
+    <!-- Preload the actual woff2 files (Latin subset) for the two fonts that render
+         above the fold: Syne for the hero name, IBM Plex Mono 400 for hero/body text.
+         URLs are Google Fonts' versioned CDN assets — if Google rev's the version,
+         the preload silently no-ops and the CSS-driven fetch still works. -->
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="https://fonts.gstatic.com/s/syne/v24/8vIH7w4qzmVxm2BL9A.woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="https://fonts.gstatic.com/s/ibmplexmono/v20/-F63fjptAgt5VM-kVkqdyU8n1i8q1w.woff2"
+      crossorigin
     />
   </head>
   <body>
