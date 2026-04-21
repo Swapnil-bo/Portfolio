@@ -126,6 +126,15 @@ export const projects = [
     demo: "https://ai-product-teardown.vercel.app/"
   },
   {
+    name: "Git Wrapped",
+    desc: "Like Spotify Wrapped, but for your GitHub. Commit patterns, peak hours, streaks & your coder archetype — powered by Groq AI.",
+    tags: ["FastAPI", "React", "Vite", "Groq", "Python", "Tailwind", "Framer Motion", "GitHub API", "html2canvas"],
+    category: "Full-Stack",
+    featured: true,
+    github: "https://github.com/Swapnil-bo/Git-Wrapped",
+    demo: "https://git-wrapped-blond.vercel.app/"
+  },
+  {
     name: "AI Roast My Code",
     desc: "An AI-powered code roaster — paste any public GitHub repo and get destroyed. Built with FastAPI + Groq + React.",
     tags: ["FastAPI", "React", "Vite", "Groq", "Python", "Pillow", "Pydantic", "Uvicorn", "JavaScript", "REST API", "GitHub API", "Generative AI"],

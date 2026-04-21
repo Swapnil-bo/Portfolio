@@ -17,7 +17,7 @@ const commands = {
     'Swapnil Hazra — AI Engineer & Vibe Coder',
     'Building privacy-first agents and local LLM systems.',
     'Currently on the 100 Days of Vibe Coding challenge.',
-    '13 projects shipped. Every line of code is public.',
+    '26 projects shipped. Every line of code is public.',
   ],
   projects: () => [
     'Projects shipped:',
