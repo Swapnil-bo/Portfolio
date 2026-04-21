@@ -8,7 +8,7 @@ const typedText = '> initializing swapnil_hazra...'
 
 const stats = [
   { value: 26, label: 'Projects Shipped', suffix: '' },
-  { value: 100, label: 'Days Challenge', suffix: '' },
+  { value: 12, label: 'Live Demos', suffix: '' },
   { value: 13, label: 'Agent Systems', suffix: '+' },
 ]
 
@@ -174,7 +174,7 @@ function Hero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.2 }}
           >
-            AI Engineer &amp; Vibe Coder
+            AI Engineer · Agent Systems &amp; LLMs
           </motion.p>
         )}
 
@@ -205,7 +205,7 @@ function Hero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.3 }}
           >
-            Building privacy-first agents and local LLM systems. Shipping every day for 100 days.
+            Building privacy-first agents and local LLM systems. 26 projects open-sourced.
           </motion.p>
         )}
 

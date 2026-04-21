@@ -1,7 +1,7 @@
 # CLAUDE.md — Swapnil Hazra Portfolio Website
 
 ## Project Overview
-A dark cyberpunk-themed portfolio for Swapnil Hazra — AI Engineer & Vibe Coder. This isn't a resume website. It's a recruiter-stopping, bookmark-worthy experience that proves technical depth through its own execution. If the portfolio itself feels like an engineering project, the recruiter already knows the person behind it can build.
+A dark cyberpunk-themed portfolio for Swapnil Hazra — AI Engineer focused on agent systems and LLMs. This isn't a resume website. It's a recruiter-stopping, bookmark-worthy experience that proves technical depth through its own execution. If the portfolio itself feels like an engineering project, the recruiter already knows the person behind it can build.
 
 **Stack**: React 18 + Vite + Tailwind CSS v4 + Framer Motion · Deployed on Vercel · Fully static, no backend.
 
@@ -100,10 +100,10 @@ A fullscreen loading/boot screen that plays for ~2.5 seconds on first visit:
 - **Content** (center-left aligned, max-width 800px, left-padded ~10%):
   - **Line 1** (typed animation): `> initializing swapnil_hazra...` — IBM Plex Mono, `--text-secondary`, typed character-by-character over ~1.5s with blinking `_` cursor
   - **Line 2** (staggered reveal, starts after typing finishes): `Swapnil Hazra` — HUGE (`clamp(2.5rem, 6vw, 5rem)`), Syne 700, `--text-primary` (white), each word slides up from 30px below with opacity 0→1, staggered 100ms per word
-  - **Line 3** (200ms after Line 2): `AI Engineer & Vibe Coder` — Syne 600, `--neon-green` with `.text-glow`, fade in
-  - **Line 4** (300ms after): `Building privacy-first agents and local LLM systems. Shipping every day for 100 days.` — IBM Plex Mono 400, `--text-secondary`, max-width 600px
+  - **Line 3** (200ms after Line 2): `AI Engineer · Agent Systems & LLMs` — Syne 600, `--neon-green` with `.text-glow`, fade in
+  - **Line 4** (300ms after): `Building privacy-first agents and local LLM systems. 26 projects open-sourced.` — IBM Plex Mono 400, `--text-secondary`, max-width 600px
   - **Stats bar** (400ms after, horizontal row):
-    - `13` Projects Shipped · `100` Days Challenge · `6+` Agent Systems
+    - `26` Projects Shipped · `12` Live Demos · `13+` Agent Systems
     - Numbers: Syne 700 `--neon-green`, labels: IBM Plex Mono `--text-secondary`
     - Separated by faint `|` dividers in `--text-ghost`
   - **CTA row** (500ms after):
@@ -124,15 +124,13 @@ A fullscreen loading/boot screen that plays for ~2.5 seconds on first visit:
   - **Left — Bio**:
     > I'm an AI Engineer specializing in Generative AI, agentic workflows, and local LLM systems. I build multi-agent pipelines that plan, reason, and self-correct — running entirely on consumer GPUs.
     >
-    > Currently on Day X of my **100 Days of Vibe Coding** challenge — shipping an open-source AI project every few days. 13 projects and counting. Every line of code is public.
-    >
-    > I don't just use AI frameworks. I stress-test them, break them, and rebuild them until they work on an RTX 3050 with 8GB RAM. Constraints breed creativity.
+    > I don't just use AI frameworks. I stress-test them, break them, and rebuild them until they work on an RTX 3050 with 8GB RAM and a MacBook Air M1. Constraints breed creativity.
 
     Style: IBM Plex Mono, `--text-secondary`, 1.7 line-height, bold phrases in `--text-primary`
 
   - **Right — Info Grid** (2×2 cards, each with a colored left-border accent):
     - `🎯 FOCUS` → Generative AI · Agentic Systems · RAG (left-border: `--neon-green`)
-    - `🔥 STREAK` → 100 Days of Vibe Coding (left-border: `--neon-hot`) — add a tiny pulsing "LIVE" dot
+    - `🔥 STREAK` → Shipping in Public (left-border: `--neon-hot`) — add a tiny pulsing "LIVE" dot
     - `🎓 STUDYING` → B.Tech CS · Brainware University (left-border: `--neon-cyan`)
     - `⚡ SEEKING` → AI/ML Product Management Internships (left-border: `--neon-purple`) — **RECRUITER MAGNET**
     - Card style: `--bg-surface`, 4px colored left border, padding 16px, `--text-secondary` body, label in `--text-ghost` uppercase small
@@ -337,10 +335,10 @@ export const projects = [
 export const timeline = [
   {
     year: "2026",
-    title: "100 Days of Vibe Coding",
-    desc: "Launched a public build challenge — shipping an AI project every few days. CutAI, EchoChamber, LoreWeaver, Butterfly Effect Simulator deployed. 13 projects open-sourced. Building in public on X and LinkedIn.",
+    title: "Shipping AI Agents & Full-Stack Products",
+    desc: "Open-sourced 26 projects — from local multi-agent pipelines (NEXUS, AutoResearcher) to full-stack AI products (CutAI, Git Wrapped, AI Product Teardown). Every line of code is public on GitHub.",
     tags: ["React", "FastAPI", "Groq", "Vercel", "Claude Code"],
-    icon: "🔥"
+    icon: "🚀"
   },
   {
     year: "2025",
@@ -432,23 +430,23 @@ export const timeline = [
 
 In `index.html` `<head>`:
 ```html
-<title>Swapnil Hazra | AI Engineer & Vibe Coder</title>
-<meta name="description" content="AI Engineer building privacy-first agents, multi-agent pipelines, and local LLM systems. 13 projects shipped. Currently on the 100 Days of Vibe Coding challenge." />
+<title>Swapnil Hazra | AI Engineer</title>
+<meta name="description" content="AI Engineer building privacy-first agents, multi-agent pipelines, and local LLM systems. 26 open-source projects shipped." />
 
 <!-- Open Graph -->
-<meta property="og:title" content="Swapnil Hazra | AI Engineer & Vibe Coder" />
-<meta property="og:description" content="Building privacy-first agents and local LLM systems. 13 projects shipped." />
+<meta property="og:title" content="Swapnil Hazra | AI Engineer" />
+<meta property="og:description" content="Building privacy-first agents and local LLM systems. 26 open-source projects shipped." />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="/og.png" />
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Swapnil Hazra | AI Engineer & Vibe Coder" />
-<meta name="twitter:description" content="Building privacy-first agents and local LLM systems. 13 projects shipped." />
+<meta name="twitter:title" content="Swapnil Hazra | AI Engineer" />
+<meta name="twitter:description" content="Building privacy-first agents and local LLM systems. 26 open-source projects shipped." />
 <meta name="twitter:image" content="/og.png" />
 ```
 
-**OG Image**: Create a simple 1200×630 dark image with "Swapnil Hazra" in Syne and "AI Engineer & Vibe Coder" in neon green. Can be generated manually or with a Vercel OG template. Place at `public/og.png`.
+**OG Image**: Create a simple 1200×630 dark image with "Swapnil Hazra" in Syne and "AI Engineer · Agent Systems & LLMs" in neon green. Can be generated manually or with a Vercel OG template. Place at `public/og.png`.
 
 ---
 

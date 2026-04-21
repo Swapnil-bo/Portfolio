@@ -14,9 +14,8 @@ const commands = {
     '  exit     — close terminal',
   ],
   about: () => [
-    'Swapnil Hazra — AI Engineer & Vibe Coder',
+    'Swapnil Hazra — AI Engineer · Agent Systems & LLMs',
     'Building privacy-first agents and local LLM systems.',
-    'Currently on the 100 Days of Vibe Coding challenge.',
     '26 projects shipped. Every line of code is public.',
   ],
   projects: () => [

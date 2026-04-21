@@ -1,10 +1,10 @@
 export const timeline = [
   {
     year: "2026",
-    title: "100 Days of Vibe Coding",
-    desc: "Launched a public build challenge — shipping an AI project every few days. CutAI, EchoChamber, LoreWeaver, Butterfly Effect Simulator deployed. 26 projects open-sourced. Building in public on X and LinkedIn.",
+    title: "Shipping AI Agents & Full-Stack Products",
+    desc: "Open-sourced 26 projects — from local multi-agent pipelines (NEXUS, AutoResearcher) to full-stack AI products (CutAI, Git Wrapped, AI Product Teardown). Every line of code is public on GitHub.",
     tags: ["React", "FastAPI", "Groq", "Vercel", "Claude Code"],
-    icon: "🔥"
+    icon: "🚀"
   },
   {
     year: "2026",

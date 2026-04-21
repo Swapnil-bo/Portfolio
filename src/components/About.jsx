@@ -12,7 +12,7 @@ const infoCards = [
   {
     emoji: '🔥',
     label: 'STREAK',
-    value: '100 Days of Vibe Coding',
+    value: 'Shipping in Public',
     borderColor: 'var(--neon-hot)',
     live: true,
   },

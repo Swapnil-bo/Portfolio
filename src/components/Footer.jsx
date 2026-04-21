@@ -12,7 +12,7 @@ function Footer() {
           &copy; 2026 Swapnil Hazra
         </p>
         <p className="font-mono text-xs flex items-center gap-1.5" style={{ color: 'var(--text-ghost)' }}>
-          Built with React + vibes ·
+          Built with React + Framer Motion ·
           <a
             href="https://github.com/Swapnil-bo/Portfolio"
             target="_blank"
