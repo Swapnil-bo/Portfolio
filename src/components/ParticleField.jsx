@@ -85,6 +85,41 @@ function ParticleField() {
       }
     }
 
+    // Pause the loop when the tab is hidden or the canvas is scrolled off-screen.
+    let tabVisible = !document.hidden
+    let inViewport = true
+
+    const start = () => {
+      if (!tabVisible || !inViewport) return
+      if (animRef.current) return // already running
+      animRef.current = requestAnimationFrame(animate)
+    }
+
+    const stop = () => {
+      if (animRef.current) {
+        cancelAnimationFrame(animRef.current)
+        animRef.current = null
+      }
+    }
+
+    const handleVisibilityChange = () => {
+      tabVisible = !document.hidden
+      if (tabVisible) start()
+      else stop()
+    }
+
+    const viewportObserver = new IntersectionObserver(
+      ([entry]) => {
+        inViewport = entry.isIntersecting
+        if (inViewport) start()
+        else stop()
+      },
+      { threshold: 0 }
+    )
+    viewportObserver.observe(canvas)
+
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+
     const animate = () => {
       const w = canvas.width
       const h = canvas.height
@@ -150,13 +185,18 @@ function ParticleField() {
         }
       }
 
-      animRef.current = requestAnimationFrame(animate)
+      animRef.current = null
+      if (tabVisible && inViewport) {
+        animRef.current = requestAnimationFrame(animate)
+      }
     }
 
-    animRef.current = requestAnimationFrame(animate)
+    start()
 
     return () => {
-      cancelAnimationFrame(animRef.current)
+      stop()
+      viewportObserver.disconnect()
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
       window.removeEventListener('resize', handleResize)
       window.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('mouseleave', handleMouseLeave)
