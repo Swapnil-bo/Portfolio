@@ -26,25 +26,30 @@ function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Intersection Observer for active section tracking
+  // Intersection Observer for active section tracking — single observer
+  // watches all sections so we only maintain one IO instance instead of N.
   useEffect(() => {
-    const observers = []
-    const sections = navLinks.map(link => document.getElementById(link.id)).filter(Boolean)
+    const sections = navLinks
+      .map(link => document.getElementById(link.id))
+      .filter(Boolean)
+    if (sections.length === 0) return
 
-    sections.forEach(section => {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Entries arrive in DOM order; the last intersecting one is the
+        // section furthest down the page that's still in the detection band,
+        // which is the one the user is scrolling into.
+        for (const entry of entries) {
           if (entry.isIntersecting) {
-            setActiveSection(section.id)
+            setActiveSection(entry.target.id)
           }
-        },
-        { threshold: 0.1, rootMargin: '-80px 0px -50% 0px' }
-      )
-      observer.observe(section)
-      observers.push(observer)
-    })
+        }
+      },
+      { threshold: 0.1, rootMargin: '-80px 0px -50% 0px' }
+    )
 
-    return () => observers.forEach(obs => obs.disconnect())
+    sections.forEach(section => observer.observe(section))
+    return () => observer.disconnect()
   }, [])
 
   // Lock body scroll when mobile menu is open
