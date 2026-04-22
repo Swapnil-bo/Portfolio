@@ -212,7 +212,7 @@ function Hero() {
         {/* Stats bar — animated counters */}
         {typingDone && (
           <motion.div
-            className="flex flex-wrap items-center gap-4 md:gap-6 mb-8"
+            className="flex flex-wrap md:flex-nowrap items-center gap-4 md:gap-6 mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.4 }}
