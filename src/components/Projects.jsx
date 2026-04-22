@@ -1,4 +1,4 @@
-import { useState, useRef, lazy, Suspense } from 'react'
+import { useState, useRef, useEffect, lazy, Suspense } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { projects } from '../data/projects'
 import ProjectCard from './ProjectCard'
@@ -10,10 +10,21 @@ import { playClickSound } from '../utils/hoverSound'
 const ProjectModal = lazy(() => import('./ProjectModal'))
 
 const filters = ['All', 'Featured', 'Agentic AI', 'Local LLMs', 'ML & Data Science', 'Full-Stack']
+const FILTER_SET = new Set(filters)
+
+function readFilterFromURL() {
+  if (typeof window === 'undefined') return { filter: 'All', tag: null }
+  const params = new URLSearchParams(window.location.search)
+  const tag = params.get('tag')
+  if (tag) return { filter: 'All', tag }
+  const filter = params.get('filter')
+  if (filter && FILTER_SET.has(filter)) return { filter, tag: null }
+  return { filter: 'All', tag: null }
+}
 
 function Projects() {
-  const [activeFilter, setActiveFilter] = useState('All')
-  const [activeTag, setActiveTag] = useState(null)
+  const [activeFilter, setActiveFilter] = useState(() => readFilterFromURL().filter)
+  const [activeTag, setActiveTag] = useState(() => readFilterFromURL().tag)
   const [selectedProject, setSelectedProject] = useState(null)
   // Stays true after first open so the modal can play its exit animation on close
   // instead of unmounting synchronously with selectedProject going null.
@@ -24,6 +35,44 @@ function Projects() {
     setModalMounted(true)
     setSelectedProject(project)
   }
+
+  // Reflect filter/tag state in the URL so views are shareable.
+  // replaceState, not pushState — filter UI shouldn't clog browser history.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    params.delete('tag')
+    params.delete('filter')
+    if (activeTag) params.set('tag', activeTag)
+    else if (activeFilter !== 'All') params.set('filter', activeFilter)
+    const qs = params.toString()
+    const next = `${window.location.pathname}${qs ? '?' + qs : ''}${window.location.hash}`
+    const current = `${window.location.pathname}${window.location.search}${window.location.hash}`
+    if (next !== current) window.history.replaceState(null, '', next)
+  }, [activeFilter, activeTag])
+
+  // Re-sync state when the user navigates with back/forward.
+  useEffect(() => {
+    const onPop = () => {
+      const { filter, tag } = readFilterFromURL()
+      setActiveFilter(filter)
+      setActiveTag(tag)
+    }
+    window.addEventListener('popstate', onPop)
+    return () => window.removeEventListener('popstate', onPop)
+  }, [])
+
+  // Deep link: when landing with ?tag= or ?filter= and no explicit hash,
+  // jump to the projects grid so the shared filter is visible.
+  useEffect(() => {
+    if (window.location.hash) return
+    const { filter, tag } = readFilterFromURL()
+    if (!tag && filter === 'All') return
+    const raf = requestAnimationFrame(() => {
+      document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    })
+    return () => cancelAnimationFrame(raf)
+  }, [])
+
   const headerInView = useInView(headerRef, { once: true, amount: 0.1 })
   const scrambledTitle = useTextScramble("What I've Built", headerInView)
 
