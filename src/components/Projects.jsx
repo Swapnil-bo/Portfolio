@@ -12,6 +12,13 @@ const ProjectModal = lazy(() => import('./ProjectModal'))
 const filters = ['All', 'Featured', 'Agentic AI', 'Local LLMs', 'ML & Data Science', 'Full-Stack']
 const FILTER_SET = new Set(filters)
 
+const filterCounts = filters.reduce((acc, f) => {
+  if (f === 'All') acc[f] = projects.length
+  else if (f === 'Featured') acc[f] = projects.filter(p => p.featured).length
+  else acc[f] = projects.filter(p => p.category === f).length
+  return acc
+}, {})
+
 function readFilterFromURL() {
   if (typeof window === 'undefined') return { filter: 'All', tag: null }
   const params = new URLSearchParams(window.location.search)
@@ -168,6 +175,9 @@ function Projects() {
               }}
             >
               {filter}
+              <span style={{ marginLeft: 6, opacity: 0.55 }}>
+                {filterCounts[filter]}
+              </span>
             </button>
           ))}
         </div>
